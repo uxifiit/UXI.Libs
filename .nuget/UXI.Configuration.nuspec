@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>UXI.Configuration</id>
+    <version>2.1.3</version>
+    <title>UXI.Common.Configuration</title>
+    <authors>UXI Dev</authors>
+    <owners>UXI FIIT STUBA</owners>
+    <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Custom implementation for configuring libraries and applications in UXR Infrastructure.</description>
+    <releaseNotes>Fixed access to the setting of the property key.</releaseNotes>
+    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <tags>Configuration</tags>
+    <dependencies>
+      <dependency id="UXI.Common" version="2.*" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\UXI.Configuration\bin\Release\UXI.Configuration.dll" target="lib\net45" />
+  </files>
+</package>

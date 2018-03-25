@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>UXI.OwinServer</id>
+    <version>2.3.1</version>
+    <title>UXI.OwinServer</title>
+    <authors>UXI Dev</authors>
+    <owners>UXI FIIT STUBA</owners>
+    <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Implementation of self-host OWIN server with support for SignalR and Ninject.</description>
+    <releaseNotes>Removed UTC time zone restriction.</releaseNotes>
+    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <tags>Owin ServerHost</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.Cors" version="5.2.3" />
+      <dependency id="Microsoft.AspNet.SignalR.Core" version="2.2.0" />
+      <dependency id="Microsoft.AspNet.SignalR.Owin" version="1.2.2" />
+      <dependency id="Microsoft.AspNet.SignalR.SelfHost" version="2.2.0" />
+      <dependency id="Microsoft.AspNet.WebApi.Core" version="5.2.3" />
+      <dependency id="Microsoft.AspNet.WebApi.Cors" version="5.2.3" />
+      <dependency id="Microsoft.AspNet.WebApi.Owin" version="5.2.3" />
+      <dependency id="Microsoft.AspNet.WebApi.OwinSelfHost" version="5.2.3" />
+      <dependency id="Microsoft.AspNet.WebApi.SelfHost" version="5.2.3" />
+      <dependency id="Microsoft.Owin" version="3.0.1" />
+      <dependency id="Microsoft.Owin.Cors" version="3.0.1" />
+      <dependency id="Microsoft.Owin.Host.HttpListener" version="3.0.1" />
+      <dependency id="Microsoft.Owin.Hosting" version="3.0.1" />
+      <dependency id="Microsoft.Owin.SelfHost" version="3.0.1" />
+      <dependency id="Microsoft.Owin.StaticFiles" version="3.0.1" />
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+      <dependency id="Ninject" version="3.2.2" />
+      <dependency id="Ninject.Web.Common" version="3.2.0" />
+      <dependency id="Ninject.Web.Common.OwinHost" version="3.2.3" />
+      <dependency id="Ninject.Web.Common.Selfhost" version="3.2.3" />
+      <dependency id="Ninject.Web.WebApi" version="3.2.4" />
+      <dependency id="Ninject.Web.WebApi.OwinHost" version="3.2.4" />
+      <dependency id="Ninject.Web.WebApi.Selfhost" version="3.2.4" />
+      <dependency id="UXI.Common" version="2.*" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\UXI.OwinServer\bin\Release\UXI.OwinServer.dll" target="lib\net45" />
+  </files>
+</package>

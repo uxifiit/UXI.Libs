@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>UXI.Configuration.IniStorage</id>
+    <version>2.1.0</version>
+    <title>UXI.Common.Configuration.IniStorage</title>
+    <authors>UXI Dev</authors>
+    <owners>UXI FIIT STUBA</owners>
+    <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Implementation of IConfigurationStorage from the UXI.Common.Configuration package with INI file.</description>
+    <releaseNotes>Updated IniFile with new method ContainsKey to check for existence of a specific section and key.</releaseNotes>
+    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <tags>Configuration INI</tags>
+    <dependencies>
+      <dependency id="ini-parser" version="2.3.0" />
+      <dependency id="UXI.Common" version="2.*" />
+      <dependency id="UXI.Configuration" version="2.1.3" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\UXI.Configuration.IniStorage\bin\Release\UXI.Configuration.IniStorage.dll" target="lib\net45" />
+  </files>
+</package>

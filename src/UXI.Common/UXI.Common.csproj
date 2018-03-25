@@ -77,8 +77,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>if "Release"=="$(ConfigurationName)" (
-cd "$(SolutionDir).NuGet"
-pack.bat "$(ProjectPath)" )</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

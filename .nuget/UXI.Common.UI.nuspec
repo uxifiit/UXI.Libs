@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>UXI.Common.UI</id>
+    <version>2.3.2</version>
+    <title>UXI.Common.UI</title>
+    <authors>UXI Dev</authors>
+    <owners>UXI FIIT STUBA</owners>
+    <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Base helper classes for XAML UI.</description>
+    <releaseNotes>Added new overload of Set method in BindableBase to return previous value as well.</releaseNotes>
+    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <tags>XAML BindableBase Converter BoolToVisibilityConverter RelativeToAbsolutePositionConverter BindableValueHolder GenericDataTemplateSelector</tags>
+    <dependencies>
+      <dependency id="UXI.Common" version="2.*" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\UXI.Common.UI\bin\Release\UXI.Common.UI.dll" target="lib\net45" />
+  </files>
+</package>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>UXI.CQRS.EntityFramework</id>
+    <version>1.0.0</version>
+    <title>UXI.CQRS.EntityFramework</title>
+    <authors>UXI Dev</authors>
+    <owners>UXI FIIT STUBA</owners>
+    <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extensions to the UXI.CQRS library specific to EntityFramework</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <tags>TransactionCommandHandlerDecorator</tags>
+    <dependencies>
+      <dependency id="EntityFramework" version="6.1.3" />
+      <dependency id="UXI.CQRS" version="1.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\UXI.CQRS.EntityFramework\bin\Release\UXI.CQRS.EntityFramework.dll" target="lib\net45" />
+  </files>
+</package>

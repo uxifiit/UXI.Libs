@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>UXI.IO.NTFS</id>
+    <version>2.0.0</version>
+    <title>UXI.IO.NTFS</title>
+    <authors>UXI Dev</authors>
+    <owners>UXI FIIT STUBA</owners>
+    <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>NTFS helper extensions.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <tags>NTFS Unblock</tags>
+    <dependencies>
+      <dependency id="Trinet.Core.IO.Ntfs" version="4.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\UXI.IO.NTFS\bin\Release\UXI.IO.NTFS.dll" target="lib\net45" />
+  </files>
+</package>

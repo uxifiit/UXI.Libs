@@ -49,7 +49,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.Common.UI.TestApp", "te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1B15D4C1-ECBA-4782-9436-65F71524D509}"
 	ProjectSection(SolutionItems) = preProject
+		build.bat = build.bat
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7A50DD6B-449E-4228-8ABA-9B7E100A351F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\UXI.App.nuspec = .nuget\UXI.App.nuspec
+		.nuget\UXI.Common.nuspec = .nuget\UXI.Common.nuspec
+		.nuget\UXI.Common.UI.nuspec = .nuget\UXI.Common.UI.nuspec
+		.nuget\UXI.Common.Web.nuspec = .nuget\UXI.Common.Web.nuspec
+		.nuget\UXI.Common.WebApi.nuspec = .nuget\UXI.Common.WebApi.nuspec
+		.nuget\UXI.Configuration.IniStorage.nuspec = .nuget\UXI.Configuration.IniStorage.nuspec
+		.nuget\UXI.Configuration.nuspec = .nuget\UXI.Configuration.nuspec
+		.nuget\UXI.CQRS.EntityFramework.nuspec = .nuget\UXI.CQRS.EntityFramework.nuspec
+		.nuget\UXI.CQRS.nuspec = .nuget\UXI.CQRS.nuspec
+		.nuget\UXI.IO.NTFS.nuspec = .nuget\UXI.IO.NTFS.nuspec
+		.nuget\UXI.IO.nuspec = .nuget\UXI.IO.nuspec
+		.nuget\UXI.OwinServer.nuspec = .nuget\UXI.OwinServer.nuspec
+		.nuget\UXI.SystemApi.nuspec = .nuget\UXI.SystemApi.nuspec
+		.nuget\UXI.ZIP.nuspec = .nuget\UXI.ZIP.nuspec
 	EndProjectSection
 EndProject
 Global

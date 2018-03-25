@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>UXI.IO</id>
+    <version>2.0.0</version>
+    <title>UXI.IO</title>
+    <authors>UXI Dev</authors>
+    <owners>UXI FIIT STUBA</owners>
+    <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Helper libraries for handling IO operations, i.e., temporary files.</description>
+    <releaseNotes>Fixed namespace.</releaseNotes>
+    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <tags>TempFile DirectoryHelper</tags>
+    <dependencies>
+      <dependency id="UXI.Common" version="2.*" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\UXI.IO\bin\Release\UXI.IO.dll" target="lib\net45" />
+  </files>
+</package>

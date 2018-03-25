@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>UXI.ZIP</id>
+    <version>2.1.1</version>
+    <title>UXI.ZIP</title>
+    <authors>UXI Dev</authors>
+    <owners>UXI FIIT STUBA</owners>
+    <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Helper classes for ZIP archives compression and decompression.</description>
+    <releaseNotes>Fixed unpacking files with space in name.</releaseNotes>
+    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <tags>ZIP</tags>
+    <dependencies>
+      <dependency id="DotNetZip" version="1.9.7" />
+      <dependency id="UXI.Common" version="2.3.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\UXI.ZIP\bin\Release\UXI.ZIP.dll" target="lib\net45" />
+  </files>
+</package>
