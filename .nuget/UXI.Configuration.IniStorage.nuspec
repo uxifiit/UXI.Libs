@@ -19,6 +19,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\UXI.Configuration.IniStorage\bin\Release\UXI.Configuration.IniStorage.dll" target="lib\net45" />
+    <file src="..\src\UXI.Configuration.IniStorage\bin\Release\UXI.Configuration.IniStorage.dll" target="lib\net452" />
   </files>
 </package>

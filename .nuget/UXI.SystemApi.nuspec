@@ -15,6 +15,6 @@
     <dependencies />
   </metadata>
   <files>
-    <file src="..\src\UXI.SystemApi\bin\Release\UXI.SystemApi.dll" target="lib\net45" />
+    <file src="..\src\UXI.SystemApi\bin\Release\UXI.SystemApi.dll" target="lib\net452" />
   </files>
 </package>

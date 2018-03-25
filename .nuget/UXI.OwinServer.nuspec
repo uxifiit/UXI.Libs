@@ -40,6 +40,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\UXI.OwinServer\bin\Release\UXI.OwinServer.dll" target="lib\net45" />
+    <file src="..\src\UXI.OwinServer\bin\Release\UXI.OwinServer.dll" target="lib\net452" />
   </files>
 </package>
