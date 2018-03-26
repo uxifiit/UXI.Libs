@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="UXI.Configuration.IniStorage.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UXI.Common\UXI.Common.csproj">

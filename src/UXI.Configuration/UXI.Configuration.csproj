@@ -61,9 +61,6 @@
     <Compile Include="Storages\IStorageLoader.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="UXI.Configuration.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\UXI.Common\UXI.Common.csproj">
       <Project>{2f7adf76-e1bc-4f1c-b82c-a7eaec9843cb}</Project>
       <Name>UXI.Common</Name>

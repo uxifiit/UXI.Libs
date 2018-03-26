@@ -58,9 +58,6 @@
     <Compile Include="WindowInterop.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="UXI.Common.UI.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\UXI.Common\UXI.Common.csproj">
       <Project>{2F7ADF76-E1BC-4F1C-B82C-A7EAEC9843CB}</Project>
       <Name>UXI.Common</Name>

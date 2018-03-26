@@ -50,9 +50,6 @@
     <Compile Include="HookInterop.cs" />
     <Compile Include="Screen\ScreenParametersProvider.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="UXI.System.Api.nuspec" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
