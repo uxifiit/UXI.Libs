@@ -7,7 +7,7 @@ This repository contains multiple libraries with utility and helper classes that
 To use these libraries in your projects, add them as a NuGet reference from the UXIsk MyGet feed. 
 
 |Library |Package|Description|
-|:--|:--:|:--|
+|--------|:-----:|-----------|
 |UXI.App|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.App.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.App)|
 |UXI.Common|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.Common.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.Common)|
 |UXI.Common.UI|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.Common.UI.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.Common.UI)|
