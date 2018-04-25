@@ -36,7 +36,7 @@
       <dependency id="Ninject.Web.WebApi" version="3.2.4" />
       <dependency id="Ninject.Web.WebApi.OwinHost" version="3.2.4" />
       <dependency id="Ninject.Web.WebApi.Selfhost" version="3.2.4" />
-      <dependency id="UXI.Common" version="2.*" />
+      <dependency id="UXI.Common" version="2.3.0" />
     </dependencies>
   </metadata>
   <files>

@@ -14,7 +14,7 @@
     <tags>SingleInstance</tags>
     <dependencies>
       <dependency id="CommandLineParser" version="2.1.1-beta" />
-      <dependency id="UXI.Common" version="2.*" />
+      <dependency id="UXI.Common" version="2.3.0" />
     </dependencies>
   </metadata>
   <files>
