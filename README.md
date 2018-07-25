@@ -1,7 +1,5 @@
 # UXIsk Common Libraries
 
-[![martinkonopka MyGet Build Status](https://www.myget.org/BuildSource/Badge/martinkonopka?identifier=e98d72db-645c-43f5-ad52-59a896e35c8f)](https://www.myget.org/)
-
 This repository contains multiple libraries with utility and helper classes that are used in the UXR infrastructure. 
 
 To use these libraries in your projects, add them as a NuGet reference from the UXIsk MyGet feed. 
