@@ -35,5 +35,5 @@ UXI.OwinServer
 UXI.SystemApi
 UXI.ZIP
 ) do (
-	call "%nuget%" pack ".nuget\%%p.nuspec" -symbols -o Build -p Configuration=%config% 
+	call "%nuget%" pack ".nuget\%%p.nuspec" -Symbols -OutputDirectory build -Properties Configuration=%config% 
 )
