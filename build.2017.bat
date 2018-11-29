@@ -11,7 +11,7 @@ if not "%PackageVersion%" == "" (
 )
 
 REM Restore packages
-call "%nuget%" restore UXI-Libs.sln -NonInteractive
+call "%nuget%" restore UXI.Libs.sln -NonInteractive
 
 REM Build
 "%programfiles(x86)%\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" "UXI.Libs.sln" /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:false
