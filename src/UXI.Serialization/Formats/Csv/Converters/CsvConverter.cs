@@ -10,8 +10,9 @@ namespace UXI.Serialization.Csv.Converters
 {
     public abstract class CsvConverter
     {
-        public virtual bool CanRead { get; }
-        public virtual bool CanWrite { get; }
+        public virtual bool CanRead => true;
+
+        public virtual bool CanWrite => true;
 
         public abstract bool CanConvert(Type objectType);
 
