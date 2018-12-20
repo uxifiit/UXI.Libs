@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.App", "src\UXI.App\UXI.App.csproj", "{3B6782FA-1654-4437-BF77-01407FB09672}"
 EndProject
@@ -64,9 +64,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7A50DD
 		.nuget\UXI.IO.NTFS.nuspec = .nuget\UXI.IO.NTFS.nuspec
 		.nuget\UXI.IO.nuspec = .nuget\UXI.IO.nuspec
 		.nuget\UXI.OwinServer.nuspec = .nuget\UXI.OwinServer.nuspec
+		.nuget\UXI.Serialization.nuspec = .nuget\UXI.Serialization.nuspec
 		.nuget\UXI.SystemApi.nuspec = .nuget\UXI.SystemApi.nuspec
 		.nuget\UXI.ZIP.nuspec = .nuget\UXI.ZIP.nuspec
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.Serialization", "src\UXI.Serialization\UXI.Serialization.csproj", "{98346E75-C4C0-4C4D-BF9C-59AE193721D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -146,6 +149,10 @@ Global
 		{1AE29A50-8324-497D-8281-A22341EBDAE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AE29A50-8324-497D-8281-A22341EBDAE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AE29A50-8324-497D-8281-A22341EBDAE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98346E75-C4C0-4C4D-BF9C-59AE193721D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98346E75-C4C0-4C4D-BF9C-59AE193721D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98346E75-C4C0-4C4D-BF9C-59AE193721D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98346E75-C4C0-4C4D-BF9C-59AE193721D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -155,5 +162,8 @@ Global
 		{504E02FA-3ED0-47B8-A34C-29803AAECB6D} = {DBF634C4-AEC3-474B-BAB6-813D25656A71}
 		{6F5CDE7C-D0D4-4C79-B980-19A8EC55324D} = {DBF634C4-AEC3-474B-BAB6-813D25656A71}
 		{1AE29A50-8324-497D-8281-A22341EBDAE7} = {DBF634C4-AEC3-474B-BAB6-813D25656A71}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F6E2430-8894-46E9-8192-241C6F61D7D3}
 	EndGlobalSection
 EndGlobal

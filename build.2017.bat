@@ -32,6 +32,7 @@ UXI.CQRS.EntityFramework
 UXI.IO
 UXI.IO.NTFS
 UXI.OwinServer
+UXI.Serialization
 UXI.SystemApi
 UXI.ZIP
 ) do (
