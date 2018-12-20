@@ -71,7 +71,7 @@ namespace UXI.Serialization.Csv
                 }
                 catch (Exception ex)
                 {
-
+                    throw new SerializationException($"Failed to write CSV header for the type [{DataType.FullName}]. See inner exception for more details.", ex);
                 }
                 _shouldWriteHeader = false;
             }
