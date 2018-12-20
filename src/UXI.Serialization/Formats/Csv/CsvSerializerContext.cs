@@ -106,7 +106,7 @@ namespace UXI.Serialization.Csv
 
         public void WriteHeader(CsvHelper.CsvWriter writer, Type dataType, CsvHeaderNamingContext naming)
         {
-            var converter = Converters.FirstOrDefault(c => c.CanConvert(dataType) && c.CanRead);
+            var converter = Converters.FirstOrDefault(c => c.CanConvert(dataType) && c.CanWrite);
 
             converter.WriteCsvHeader(writer, dataType, this, naming);
             //string headerPrefix = prefix;
