@@ -33,6 +33,7 @@ UXI.IO
 UXI.IO.NTFS
 UXI.OwinServer
 UXI.Serialization
+UXI.Serialization.Reactive
 UXI.SystemApi
 UXI.ZIP
 ) do (
