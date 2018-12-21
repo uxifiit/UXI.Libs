@@ -11,9 +11,16 @@ namespace UXI.Serialization
     {
         private readonly Dictionary<FileFormat, ISerializationFactory> _formats;
 
+
+        public DataIO(params ISerializationFactory[] factories)
+            : this(factories?.AsEnumerable())
+        {
+        }
+
+
         public DataIO(IEnumerable<ISerializationFactory> factories)
         {
-            _formats = factories.ToDictionary(f => f.Format);
+            _formats = factories?.ToDictionary(f => f.Format) ?? new Dictionary<FileFormat, ISerializationFactory>();
         }
 
 
