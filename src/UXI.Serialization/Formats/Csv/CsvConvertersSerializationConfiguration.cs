@@ -16,7 +16,7 @@ namespace UXI.Serialization.Csv
 
 
         public CsvConvertersSerializationConfiguration(params CsvConverter[] converters)
-            : this(converters.AsEnumerable())
+            : this(converters?.AsEnumerable())
         { }
 
 

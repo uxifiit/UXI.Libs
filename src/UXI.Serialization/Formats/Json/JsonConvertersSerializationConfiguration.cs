@@ -9,15 +9,15 @@ namespace UXI.Serialization.Json
 {
     public class JsonConvertersSerializationConfiguration : SerializationConfiguration<JsonSerializer>
     {
+        public JsonConvertersSerializationConfiguration(params JsonConverter[] converters) 
+            : this(converters?.AsEnumerable())
+        { }
+
+
         public JsonConvertersSerializationConfiguration(IEnumerable<JsonConverter> converters)
         {
             Converters = converters?.ToList() ?? new List<JsonConverter>();
         }
-
-
-        public JsonConvertersSerializationConfiguration(params JsonConverter[] converters) 
-            : this(converters.AsEnumerable())
-        { }
 
 
         public List<JsonConverter> Converters { get; }

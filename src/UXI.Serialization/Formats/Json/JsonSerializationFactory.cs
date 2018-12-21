@@ -17,29 +17,10 @@ namespace UXI.Serialization.Json
             : this(Enumerable.Empty<ISerializationConfiguration>())
         { }
 
-        //public JsonSerializationFactory(params JsonConverter[] converters)
-        // : this(converters.AsEnumerable())
-        //{ }
-
-
-        //public JsonSerializationFactory(IEnumerable<JsonConverter> converters)
-        //    : this(new JsonConvertersConfiguration(converters))
-        //{ }
-
-
-        //public JsonSerializationFactory(IEnumerable<JsonConverter> converters, ISerializationConfiguration configuration)
-        //    : this(new JsonConvertersConfiguration(converters), configuration)
-        //{ }
-
 
         public JsonSerializationFactory(params ISerializationConfiguration[] configurations)
-            : this(configurations.AsEnumerable())
+            : this(configurations?.AsEnumerable())
         { }
-
-
-        //public JsonSerializationFactory(IEnumerable<JsonConverter> converters, Func<JsonSerializer, DataAccess, object, JsonSerializer> configuration)
-        //    : this(converters, new RelaySerializationConfiguration<JsonSerializer>(configuration))
-        //{ }
 
 
         public JsonSerializationFactory(IEnumerable<ISerializationConfiguration> configurations)
@@ -52,7 +33,6 @@ namespace UXI.Serialization.Json
 
 
         public List<ISerializationConfiguration> Configurations { get; }
-
 
 
         public IDataReader CreateReaderForType(TextReader reader, Type dataType, object settings)
@@ -86,33 +66,5 @@ namespace UXI.Serialization.Json
 
             return serializer;
         }
-
-
-        //private JsonSerializer CreateSerializer(object settings)
-        //{
-        //    var serializer = CreateJsonSerializer();
-
-        //    AddConverters(serializer, Converters);
-
-        //    if (_ignoreDefaultConverters == false)
-        //    {
-        //       
-
-        //        AddConverters(serializer, DefaultConverters);
-        //    }
-
-        //    return serializer;
-        //}
-
-
-        
-
-        //private static void AddConverters(JsonSerializer serializer, IEnumerable<JsonConverter> converters)
-        //{
-        //    foreach (var converter in converters)
-        //    {
-        //        serializer.Converters.Add(converter);
-        //    }
-        //}
     }
 }
