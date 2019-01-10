@@ -21,7 +21,7 @@ namespace UXI.Serialization.Csv
 
         public object Deserialize(CsvHelper.CsvReader reader, Type dataType)
         {
-            return Deserialize(reader, dataType, CsvHeaderNamingContext.Empty);
+            return Deserialize(reader, dataType, new CsvHeaderNamingContext(Configuration.PrepareHeaderForMatch));
         }
 
 
@@ -29,11 +29,10 @@ namespace UXI.Serialization.Csv
         {
             var converter = Converters.FirstOrDefault(c => c.CanConvert(dataType) && c.CanRead);
 
-            //string headerPrefix = prefix;
-            //if (String.IsNullOrWhiteSpace(prefix) == false)
-            //{
-            //    headerPrefix += ReferencePrefix;
-            //}
+            if (converter == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(dataType), $"No converter defined for the requested type '{dataType.FullName}' to deserialize.");
+            }
 
             return converter.ReadCsv(reader, dataType, this, naming);
         }
@@ -51,37 +50,11 @@ namespace UXI.Serialization.Csv
         }
 
 
-
-        //public T Deserialize<T>(CsvHelper.CsvReader reader, string prefix = null)
-        //{
-        //    var converter = DataConverters.FirstOrDefault(c => c.CanConvert(typeof(T)) && c.CanRead);
-
-        //    string headerPrefix = prefix;
-        //    if (String.IsNullOrWhiteSpace(prefix) == false)
-        //    {
-        //        headerPrefix += HeaderReferenceDelimiter;
-        //    }
-
-        //    return (T)converter.ReadCsv(reader, typeof(T), this, headerPrefix);
-        //}
-
-
-        //public void Serialize(CsvHelper.CsvWriter writer, object data, Type dataType)
-        //{
-        //    Serialize(writer, data, dataType);
-        //}
-
-
-        public void Serialize(CsvHelper.CsvWriter writer, object data, Type dataType/*, bool completeRecord*/)
+        public void Serialize(CsvHelper.CsvWriter writer, object data, Type dataType)
         {
             var converter = Converters.FirstOrDefault(c => c.CanConvert(dataType) && c.CanWrite);
 
             converter.WriteCsv(data, writer, this);
-
-            //if (completeRecord)
-            //{
-            //    writer.NextRecord();
-            //}
         }
 
 
@@ -91,16 +64,9 @@ namespace UXI.Serialization.Csv
         }
 
 
-        //public void SerializeReference<T>(CsvHelper.CsvWriter writer, T data)
-        //{
-        //    Serialize(writer, data, typeof(T));
-        //}
-
-
-
         public void WriteHeader(CsvHelper.CsvWriter writer, Type dataType)
         {
-            WriteHeader(writer, dataType, CsvHeaderNamingContext.Empty);
+            WriteHeader(writer, dataType, new CsvHeaderNamingContext(Configuration.PrepareHeaderForMatch));
         }
 
 
@@ -109,11 +75,6 @@ namespace UXI.Serialization.Csv
             var converter = Converters.FirstOrDefault(c => c.CanConvert(dataType) && c.CanWrite);
 
             converter.WriteCsvHeader(writer, dataType, this, naming);
-            //string headerPrefix = prefix;
-            //if (String.IsNullOrWhiteSpace(prefix) == false)
-            //{
-            //    headerPrefix += ReferencePrefix;
-            //}
         }
 
 
@@ -135,25 +96,5 @@ namespace UXI.Serialization.Csv
 
             converter.ReadCsvHeader(reader, this);
         }
-    }
-
-    public class CsvHeaderNamingContext
-    {
-        public static readonly CsvHeaderNamingContext Empty = new CsvHeaderNamingContext();
-
-        private readonly string _prefix = String.Empty;
-
-        public CsvHeaderNamingContext() { }
-
-        public CsvHeaderNamingContext(string prefix)
-        {
-            _prefix = prefix;
-        }
-
-
-        public string Get(string name) { return _prefix + name; }
-
-
-        public CsvHeaderNamingContext GetNextLevel(string name, string delimiter) { return new CsvHeaderNamingContext(_prefix + name + delimiter); }
     }
 }

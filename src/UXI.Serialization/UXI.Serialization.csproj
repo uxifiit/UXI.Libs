@@ -57,6 +57,7 @@
     <Compile Include="Formats\Csv\CsvConvertersSerializationConfiguration.cs" />
     <Compile Include="Formats\Csv\CsvDataReader.cs" />
     <Compile Include="Formats\Csv\CsvDataWriter.cs" />
+    <Compile Include="Formats\Csv\CsvHeaderNamingContext.cs" />
     <Compile Include="Formats\Csv\CsvSerializationFactory.cs" />
     <Compile Include="Formats\Csv\CsvSerializerContext.cs" />
     <Compile Include="Formats\Json\Converters\JsonConverter`1.cs" />
