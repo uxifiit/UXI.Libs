@@ -42,6 +42,12 @@ namespace UXI.Serialization
         }
 
 
+        public IEnumerable<T> ReadInput<T>(string filePath, FileFormat fileFormat, object settings)
+        {
+            return ReadInput(filePath, fileFormat, typeof(T), settings).OfType<T>();
+        }
+
+
         public IDataReader GetInputDataReader(TextReader reader, FileFormat fileType, Type dataType, object settings)
         {
             ISerializationFactory factory;
