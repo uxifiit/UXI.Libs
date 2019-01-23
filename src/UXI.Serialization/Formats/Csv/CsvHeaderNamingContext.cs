@@ -31,6 +31,6 @@ namespace UXI.Serialization.Csv
         public string Get(string name) { return _prefix + (_prepareHeaderName?.Invoke(name) ?? name); }
 
 
-        public CsvHeaderNamingContext GetNextLevel(string name, string delimiter) { return new CsvHeaderNamingContext(_prefix + name + delimiter, _prepareHeaderName); }
+        public CsvHeaderNamingContext GetNextLevel(string name, string delimiter) { return new CsvHeaderNamingContext(Get(name) + delimiter, _prepareHeaderName); }
     }
 }
