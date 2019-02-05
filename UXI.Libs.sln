@@ -74,6 +74,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.Serialization", "src\UX
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.Serialization.Reactive", "src\UXI.Serialization.Reactive\UXI.Serialization.Reactive.csproj", "{12CF54A8-01B0-467D-BADB-38F6A542B0D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.Serialization.Test", "test\UXI.Serialization.Test\UXI.Serialization.Test.csproj", "{7BF8214F-E10A-4935-A3B5-3BD24AF329FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -160,6 +162,10 @@ Global
 		{12CF54A8-01B0-467D-BADB-38F6A542B0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12CF54A8-01B0-467D-BADB-38F6A542B0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12CF54A8-01B0-467D-BADB-38F6A542B0D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF8214F-E10A-4935-A3B5-3BD24AF329FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF8214F-E10A-4935-A3B5-3BD24AF329FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF8214F-E10A-4935-A3B5-3BD24AF329FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF8214F-E10A-4935-A3B5-3BD24AF329FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -169,6 +175,7 @@ Global
 		{504E02FA-3ED0-47B8-A34C-29803AAECB6D} = {DBF634C4-AEC3-474B-BAB6-813D25656A71}
 		{6F5CDE7C-D0D4-4C79-B980-19A8EC55324D} = {DBF634C4-AEC3-474B-BAB6-813D25656A71}
 		{1AE29A50-8324-497D-8281-A22341EBDAE7} = {DBF634C4-AEC3-474B-BAB6-813D25656A71}
+		{7BF8214F-E10A-4935-A3B5-3BD24AF329FD} = {DBF634C4-AEC3-474B-BAB6-813D25656A71}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F6E2430-8894-46E9-8192-241C6F61D7D3}
