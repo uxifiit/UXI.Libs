@@ -54,6 +54,12 @@
     <Compile Include="Formats\Csv\CsvSerializerContextTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\UXI.Serialization\UXI.Serialization.csproj">
+      <Project>{98346e75-c4c0-4c4d-bf9c-59ae193721d3}</Project>
+      <Name>UXI.Serialization</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
