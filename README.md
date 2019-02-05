@@ -18,6 +18,8 @@ To use these libraries in your projects, add them as a NuGet reference from the 
 |UXI.IO|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.IO.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.IO)|
 |UXI.IO.NTFS|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.IO.NTFS.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.IO.NTFS)|
 |UXI.OwinServer|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.OwinServer.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.OwinServer)|
+|UXI.Serialization|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.Serialization.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.Serialization)|
+|UXI.Serialization.Reactive|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.Serialization.Reactive.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.Serialization.Reactive)|
 |UXI.SystemApi|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.SystemApi.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.SystemApi)|
 |UXI.ZIP|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.ZIP.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.ZIP)|
 
