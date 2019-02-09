@@ -15,7 +15,10 @@ namespace UXI.Serialization.Json.Converters
 
         public override bool CanConvert(Type objectType)
         {
-            return (objectType == typeof(T));
+            var supportedType = typeof(T);
+
+            return (objectType == supportedType)
+                || (supportedType.IsValueType && objectType.IsValueType && Nullable.GetUnderlyingType(objectType) == supportedType);
         }
 
 
