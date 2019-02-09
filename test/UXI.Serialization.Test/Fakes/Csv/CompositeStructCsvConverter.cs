@@ -11,16 +11,26 @@ namespace UXI.Serialization.Fakes.Csv.Converters
 {
     class CompositeStructCsvConverter : CsvConverter<CompositeStruct>
     {
-        public override object ReadCsv(CsvReader reader, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected override bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref CompositeStruct result)
         {
-            var id = reader.GetField<int>(naming.Get(nameof(CompositeStruct.Id)));
-            var duration = reader.GetField<double>(naming.Get(nameof(CompositeStruct.Duration)));
+            int id;
+            double duration;
 
-            return new CompositeStruct()
+            if (
+                    reader.TryGetField<int>(naming.Get(nameof(CompositeStruct.Id)), out id)
+                 && reader.TryGetField<double>(naming.Get(nameof(CompositeStruct.Duration)), out duration)
+               )
             {
-                Id = id,
-                Duration = duration
-            };
+                result = new CompositeStruct()
+                {
+                    Id = id,
+                    Duration = duration
+                };
+
+                return true;
+            }
+
+            return false;
         }
 
         protected override void WriteCsv(CompositeStruct data, CsvWriter writer, CsvSerializerContext serializer)

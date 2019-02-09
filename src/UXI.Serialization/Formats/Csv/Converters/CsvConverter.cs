@@ -45,6 +45,61 @@ namespace UXI.Serialization.Csv.Converters
         public int Columns { get; protected set; }
 
 
+        public bool ThrowOnFailedRead { get; set; } = false;
+
+
+        public sealed override object ReadCsv(CsvReader reader, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        {
+            T result = default(T);
+            if (TryReadCsv(reader, serializer, naming, ref result))
+            {
+                return result;
+            }
+            else if (ThrowOnFailedRead)
+            {
+                throw new SerializationException($"Failed to read the data of type [{objectType.FullName}] with the converter for type [{typeof(T).FullName}].");
+            }
+            else
+            {
+                // Requested objectType can be Nullable<T>, if the converter generic type T is struct. Instead of using default(T), we construct correct default value.
+                return TypeHelper.GetDefault(objectType);
+            }
+        }
+
+
+        protected bool TryGetMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, out TMember result)
+        {
+            if (ThrowOnFailedRead)
+            {
+                result = serializer.Deserialize<TMember>(reader, naming);
+            }
+            else
+            {
+                result = serializer.DeserializeOrDefault<TMember>(reader, naming);
+            }
+
+            return true;
+        }
+
+
+        protected bool TryGetMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, string memberName, out TMember result)
+        {
+            if (ThrowOnFailedRead)
+            {
+                result = serializer.Deserialize<TMember>(reader, naming, memberName);
+            }
+            else
+            {
+                result = serializer.DeserializeOrDefault<TMember>(reader, naming, memberName);
+            }
+
+            return true;
+        }
+
+
+        protected abstract bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref T result);
+
+
         protected abstract void WriteCsvHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming);
 
 

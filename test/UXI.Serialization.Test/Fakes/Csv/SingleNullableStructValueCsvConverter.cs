@@ -11,14 +11,21 @@ namespace UXI.Serialization.Fakes.Csv.Converters
 {
     class SingleNullableStructValueCsvConverter : CsvConverter<SingleNullableStructValue>
     {
-        public override object ReadCsv(CsvReader reader, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected override bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref SingleNullableStructValue result)
         {
-            var value = serializer.Deserialize<CompositeStruct?>(reader, naming, nameof(SingleNullableStructValue.Value));
+            CompositeStruct? value;
 
-            return new SingleNullableStructValue()
+            if (TryGetMember<CompositeStruct?>(reader, serializer, naming, nameof(SingleNullableStructValue.Value), out value))
             {
-                Value = value
-            };
+                result = new SingleNullableStructValue()
+                {
+                    Value = value
+                };
+
+                return true;
+            }
+
+            return false;
         }
 
         protected override void WriteCsv(SingleNullableStructValue data, CsvWriter writer, CsvSerializerContext serializer)

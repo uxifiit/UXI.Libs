@@ -12,18 +12,27 @@ namespace UXI.Serialization.Fakes.Csv.Converters
 {
     class CompositeObjectCsvConverter : CsvConverter<CompositeObject>
     {
-        public override object ReadCsv(CsvReader reader, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected override bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref CompositeObject result)
         {
-            var single = serializer.Deserialize<SingleIntValue>(reader, naming, nameof(CompositeObject.Single));
-            var composite = serializer.Deserialize<MultipleValues>(reader, naming, nameof(CompositeObject.Composite));
-            var doubleValue = reader.GetField<double>(naming.Get(nameof(CompositeObject.Double)));
+            SingleIntValue single; 
+            MultipleValues composite;
+            double doubleValue;
 
-            return new CompositeObject()
+            if (TryGetMember<SingleIntValue>(reader, serializer, naming, nameof(CompositeObject.Single), out single)
+                && TryGetMember<MultipleValues>(reader, serializer, naming, nameof(CompositeObject.Composite), out composite)
+                && reader.TryGetField<double>(naming.Get(nameof(CompositeObject.Double)), out doubleValue))
             {
-                Single = single,
-                Composite = composite,
-                Double = doubleValue
-            };
+                result = new CompositeObject()
+                {
+                    Single = single,
+                    Composite = composite,
+                    Double = doubleValue
+                };
+
+                return true;
+            }
+
+            return false;
         }
 
         protected override void WriteCsv(CompositeObject data, CsvWriter writer, CsvSerializerContext serializer)

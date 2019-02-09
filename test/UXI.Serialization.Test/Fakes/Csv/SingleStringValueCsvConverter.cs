@@ -12,14 +12,21 @@ namespace UXI.Serialization.Fakes.Csv.Converters
 {
     class SingleStringValueCsvConverter : CsvConverter<SingleStringValue>
     {
-        public override object ReadCsv(CsvReader reader, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected override bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref SingleStringValue result)
         {
-            var value = reader.GetField<string>(naming.GetDefault("Value"));
+            string value;
 
-            return new SingleStringValue()
+            if (reader.TryGetField<string>(naming.GetDefault("Value"), out value))
             {
-                Value = value
-            };
+                result = new SingleStringValue()
+                {
+                    Value = value
+                };
+
+                return true;
+            }
+
+            return false;
         }
 
         protected override void WriteCsv(SingleStringValue data, CsvWriter writer, CsvSerializerContext serializer)

@@ -12,16 +12,23 @@ namespace UXI.Serialization.Fakes.Csv.Converters
 {
     class CompositeValueCsvConverter : CsvConverter<MultipleValues>
     {
-        public override object ReadCsv(CsvReader reader, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected override bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref MultipleValues result)
         {
-            var id = reader.GetField<int>(naming.Get(nameof(MultipleValues.Id)));
-            var name = reader.GetField<string>(naming.Get(nameof(MultipleValues.Name)));
+            int id;
+            string name;
 
-            return new MultipleValues()
+            if (reader.TryGetField<int>(naming.Get(nameof(MultipleValues.Id)), out id)
+                && reader.TryGetField<string>(naming.Get(nameof(MultipleValues.Name)), out name))
             {
-                Id = id,
-                Name = name
-            };
+                result = new MultipleValues()
+                {
+                    Id = id,
+                    Name = name
+                };
+                return true;
+            }
+
+            return false;
         }
 
         protected override void WriteCsv(MultipleValues data, CsvWriter writer, CsvSerializerContext serializer)
