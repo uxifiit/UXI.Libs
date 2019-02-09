@@ -53,7 +53,7 @@ namespace UXI.Serialization.Json.Converters
 
         protected virtual JToken ConvertBack(T value, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
 
