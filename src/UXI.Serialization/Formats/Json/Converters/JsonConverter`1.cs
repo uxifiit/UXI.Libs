@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UXI.Serialization.Common;
 
 namespace UXI.Serialization.Json.Converters
 {
     public abstract class GenericJsonConverter<T> : Newtonsoft.Json.JsonConverter
     {
-        private readonly bool _canBeNull = (typeof(T).IsValueType == false) || (Nullable.GetUnderlyingType(typeof(T)) != null);
+        private static readonly bool _canBeNull = TypeHelper.CanBeNull(typeof(T));
 
         public override bool CanConvert(Type objectType)
         {

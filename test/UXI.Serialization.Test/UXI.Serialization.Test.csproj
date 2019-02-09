@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CsvHelper.9.2.3\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -50,7 +54,22 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Formats\Csv\CsvHeaderNamingContextText.cs" />
+    <Compile Include="Fakes\CompositeObject.cs" />
+    <Compile Include="Fakes\CompositeStruct.cs" />
+    <Compile Include="Fakes\Csv\CompositeStructCsvConverter.cs" />
+    <Compile Include="Fakes\Csv\SingleNullableStructValueCsvConverter.cs" />
+    <Compile Include="Fakes\MultipleValues.cs" />
+    <Compile Include="Fakes\Csv\SingleNullableIntValueCsvConverter.cs" />
+    <Compile Include="Fakes\SingleNullableStructValue.cs" />
+    <Compile Include="Fakes\SingleIntValue.cs" />
+    <Compile Include="Fakes\SingleNullableIntValue.cs" />
+    <Compile Include="Fakes\SingleStringValue.cs" />
+    <Compile Include="Fakes\Csv\MultipleValueCsvConverter.cs" />
+    <Compile Include="Fakes\Csv\CompositeObjectCsvConverter.cs" />
+    <Compile Include="Formats\Csv\Converters\CsvConverterTest.cs" />
+    <Compile Include="Fakes\Csv\SingleStringValueCsvConverter.cs" />
+    <Compile Include="Fakes\Csv\SingleIntValueCsvConverter.cs" />
+    <Compile Include="Formats\Csv\CsvHeaderNamingContextTest.cs" />
     <Compile Include="Formats\Csv\CsvSerializerContextTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,6 +78,9 @@
       <Project>{98346e75-c4c0-4c4d-bf9c-59ae193721d3}</Project>
       <Name>UXI.Serialization</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

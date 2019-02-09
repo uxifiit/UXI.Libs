@@ -35,18 +35,37 @@ namespace UXI.Serialization.Csv
         }
 
 
-        public string Get(string propertyName = null)
+        public string Get(string propertyName)
         {
-            if (String.IsNullOrWhiteSpace(_prefix) && String.IsNullOrWhiteSpace(propertyName))
+            if (String.IsNullOrWhiteSpace(propertyName))
             {
-                throw new InvalidOperationException("No prefix defined for the current name.");
+                throw new ArgumentNullException(nameof(propertyName), "Property name cannot be null, empty, nor whitespace.");
             }
 
             string prefix = _prefix;
 
-            string name = String.IsNullOrWhiteSpace(propertyName)
-                        ? String.Empty
-                        : propertyName.Trim();
+            string name = propertyName.Trim();
+
+            string delimiter = String.IsNullOrWhiteSpace(prefix)
+                             ? String.Empty
+                             : _delimiter;
+
+            return prefix + delimiter + (_prepareHeaderName?.Invoke(name) ?? name);
+        }
+
+
+        public string GetDefault(string defaultName)
+        {
+            if (String.IsNullOrWhiteSpace(defaultName))
+            {
+                throw new ArgumentNullException(nameof(defaultName), "Default name cannot be null, empty, nor whitespace.");
+            }
+
+            string prefix = _prefix;
+
+            string name = String.IsNullOrWhiteSpace(prefix)
+                        ? defaultName.Trim()
+                        : String.Empty;
 
             string delimiter = String.IsNullOrWhiteSpace(prefix) || String.IsNullOrWhiteSpace(name)
                              ? String.Empty

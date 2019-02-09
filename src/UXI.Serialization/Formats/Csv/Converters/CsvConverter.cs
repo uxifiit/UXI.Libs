@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
+using UXI.Serialization.Common;
 
 namespace UXI.Serialization.Csv.Converters
 {
@@ -34,7 +35,28 @@ namespace UXI.Serialization.Csv.Converters
     {
         public override bool CanConvert(Type objectType)
         {
-            return (objectType == typeof(T));
+            var supportedType = typeof(T);
+
+            return (objectType == supportedType)
+                || (supportedType.IsValueType && objectType.IsValueType && Nullable.GetUnderlyingType(objectType) == supportedType);
+        }
+
+
+        public int Columns { get; protected set; }
+
+
+        protected abstract void WriteCsvHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming);
+
+
+        public sealed override void WriteCsvHeader(CsvWriter writer, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        {
+            int columnsCountBefore = writer.Context.Record.Count;
+
+            WriteCsvHeader(writer, serializer, naming);
+
+            int columnsCountAfter = writer.Context.Record.Count;
+
+            Columns = columnsCountAfter - columnsCountBefore;
         }
 
 
@@ -54,10 +76,32 @@ namespace UXI.Serialization.Csv.Converters
                     throw new SerializationException($"Failed to write or serialize next data to the CSV file. See inner exception for more details.", exception);
                 }
             }
+            else if (Object.ReferenceEquals(data, null)) 
+            {
+                try
+                {
+                    WriteEmptyFields(writer);
+                }
+                catch (Exception exception)
+                {
+                    throw new SerializationException($"Failed to write null record for the type [{typeof(T).FullName}] to the CSV file. See inner exception for more details.", exception);
+                }
+            }
             else
             {
                 throw new ArgumentException($"Type of the passed object [{data?.GetType().FullName}] does not match the type supported by this converter [{typeof(T).FullName}].");
             }
-        }       
+        }
+
+
+        protected virtual void WriteEmptyFields(CsvWriter writer)
+        {
+            int count = Columns;
+
+            while (count-- > 0)
+            {
+                writer.WriteField(null);
+            }
+        }
     }
 }
