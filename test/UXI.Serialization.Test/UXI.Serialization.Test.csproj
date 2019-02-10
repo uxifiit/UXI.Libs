@@ -39,6 +39,9 @@
       <HintPath>..\..\packages\CsvHelper.9.2.3\lib\net45\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -56,21 +59,22 @@
   <ItemGroup>
     <Compile Include="Fakes\CompositeObject.cs" />
     <Compile Include="Fakes\CompositeStruct.cs" />
-    <Compile Include="Fakes\Csv\CompositeStructCsvConverter.cs" />
-    <Compile Include="Fakes\Csv\SingleNullableStructValueCsvConverter.cs" />
+    <Compile Include="Fakes\Csv\Converters\CompositeStructCsvConverter.cs" />
+    <Compile Include="Fakes\Csv\Converters\SingleNullableStructValueCsvConverter.cs" />
+    <Compile Include="Fakes\Json\Converters\CompositeStructJsonConverter.cs" />
     <Compile Include="Fakes\MultipleValues.cs" />
-    <Compile Include="Fakes\Csv\SingleNullableIntValueCsvConverter.cs" />
+    <Compile Include="Fakes\Csv\Converters\SingleNullableIntValueCsvConverter.cs" />
     <Compile Include="Fakes\SingleNullableStructValue.cs" />
     <Compile Include="Fakes\SingleIntValue.cs" />
     <Compile Include="Fakes\SingleNullableIntValue.cs" />
     <Compile Include="Fakes\SingleStringValue.cs" />
-    <Compile Include="Fakes\Csv\MultipleValueCsvConverter.cs" />
-    <Compile Include="Fakes\Csv\CompositeObjectCsvConverter.cs" />
+    <Compile Include="Fakes\Csv\Converters\MultipleValueCsvConverter.cs" />
+    <Compile Include="Fakes\Csv\Converters\CompositeObjectCsvConverter.cs" />
     <Compile Include="Formats\Csv\Converters\CsvConverterTest.cs" />
-    <Compile Include="Fakes\Csv\SingleStringValueCsvConverter.cs" />
-    <Compile Include="Fakes\Csv\SingleIntValueCsvConverter.cs" />
+    <Compile Include="Fakes\Csv\Converters\SingleStringValueCsvConverter.cs" />
+    <Compile Include="Fakes\Csv\Converters\SingleIntValueCsvConverter.cs" />
     <Compile Include="Formats\Csv\CsvHeaderNamingContextTest.cs" />
-    <Compile Include="Formats\Csv\CsvSerializerContextTest.cs" />
+    <Compile Include="Formats\Json\Converters\GenericJsonConverterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
