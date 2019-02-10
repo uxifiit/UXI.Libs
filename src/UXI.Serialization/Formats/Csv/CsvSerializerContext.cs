@@ -13,7 +13,7 @@ namespace UXI.Serialization.Csv
 {
     public class CsvSerializerContext
     {
-        public Configuration Configuration { get; set; } = new CsvHelper.Configuration.Configuration();
+        public CsvHelper.Configuration.Configuration Configuration { get; set; } = new CsvHelper.Configuration.Configuration();
 
         public Collection<CsvConverter> Converters { get; set; } = new Collection<CsvConverter>();
 

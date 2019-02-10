@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UXI.Serialization.Configurations;
 using UXI.Serialization.Csv.Converters;
 
-namespace UXI.Serialization.Csv
+namespace UXI.Serialization.Csv.Configurations
 {
     public class CsvConvertersSerializationConfiguration : SerializationConfiguration<CsvSerializerContext>
     {

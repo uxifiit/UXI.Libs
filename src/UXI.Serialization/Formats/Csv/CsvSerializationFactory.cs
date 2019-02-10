@@ -56,7 +56,6 @@ namespace UXI.Serialization.Csv
         {
             var serializer = new CsvSerializerContext();
 
-            serializer.Configuration.PrepareHeaderForMatch = header => header.ToLower();
             serializer.Configuration.CultureInfo = System.Globalization.CultureInfo.GetCultureInfo("en-US");
 
             foreach (var configuration in Configurations)
