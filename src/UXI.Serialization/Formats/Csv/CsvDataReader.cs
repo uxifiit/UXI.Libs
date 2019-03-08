@@ -31,8 +31,8 @@ namespace UXI.Serialization.Csv
         public bool CanRead(Type objectType)
         {
             return DataType == objectType
-                || DataType.IsSubclassOf(objectType)
-                || objectType.IsAssignableFrom(DataType);
+                || DataType.IsSubclassOf(objectType)        // for inheritance
+                || objectType.IsAssignableFrom(DataType);   // for interface implementations
         }
 
 
