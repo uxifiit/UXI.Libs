@@ -11,7 +11,7 @@ namespace UXI.Serialization.Fakes.Csv.Converters
 {
     class SingleNullableStructValueCsvConverter : CsvConverter<SingleNullableStructValue>
     {
-        protected override bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref SingleNullableStructValue result)
+        protected override bool TryRead(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref SingleNullableStructValue result)
         {
             CompositeStruct? value;
 
@@ -28,12 +28,12 @@ namespace UXI.Serialization.Fakes.Csv.Converters
             return false;
         }
 
-        protected override void WriteCsv(SingleNullableStructValue data, CsvWriter writer, CsvSerializerContext serializer)
+        protected override void Write(SingleNullableStructValue data, CsvWriter writer, CsvSerializerContext serializer)
         {
             serializer.Serialize<CompositeStruct?>(writer, data.Value);
         }
 
-        protected override void WriteCsvHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected override void WriteHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
         {
             serializer.WriteHeader<CompositeStruct?>(writer, naming, nameof(SingleNullableStructValue.Value));
         }

@@ -12,7 +12,7 @@ namespace UXI.Serialization.Fakes.Csv.Converters
 {
     class SingleIntValueCsvConverter : CsvConverter<SingleIntValue>
     {
-        protected override bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref SingleIntValue result)
+        protected override bool TryRead(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref SingleIntValue result)
         {
             int value;
 
@@ -28,12 +28,12 @@ namespace UXI.Serialization.Fakes.Csv.Converters
             return false;
         }
 
-        protected override void WriteCsv(SingleIntValue data, CsvWriter writer, CsvSerializerContext serializer)
+        protected override void Write(SingleIntValue data, CsvWriter writer, CsvSerializerContext serializer)
         {
             writer.WriteField(data.Value);
         }
 
-        protected override void WriteCsvHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected override void WriteHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
         {
             writer.WriteField(naming.GetDefault(nameof(SingleIntValue.Value)));
         }

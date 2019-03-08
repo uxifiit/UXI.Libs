@@ -45,77 +45,78 @@ namespace UXI.Serialization.Csv.Converters
         public int Columns { get; protected set; }
 
 
-        public bool ThrowOnFailedRead { get; set; } = false;
+        public virtual bool ThrowOnFailedRead => false;
 
 
         public sealed override object ReadCsv(CsvReader reader, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
         {
             T result = default(T);
-            if (TryReadCsv(reader, serializer, naming, ref result))
+            if (TryRead(reader, serializer, naming, ref result))
             {
                 return result;
             }
-            else if (ThrowOnFailedRead)
+            else if (TypeHelper.CanBeNull(objectType) == false || ThrowOnFailedRead)
             {
                 throw new SerializationException($"Failed to read the data of type [{objectType.FullName}] with the converter for type [{typeof(T).FullName}].");
             }
             else
             {
-                // Requested objectType can be Nullable<T>, if the converter generic type T is struct. Instead of using default(T), we construct correct default value.
+                // Requested objectType can be Nullable<T>, if the converter generic type T is struct.
+                // Instead of returning just default(T), we must construct the correct default value.
                 return TypeHelper.GetDefault(objectType);
             }
         }
 
 
-        protected bool TryGetMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, out TMember result)
+        protected TMember DeserializeMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
         {
-            if (ThrowOnFailedRead)
-            {
-                result = serializer.Deserialize<TMember>(reader, naming);
-            }
-            else
-            {
-                result = serializer.DeserializeOrDefault<TMember>(reader, naming);
-            }
-
-            return true;
+            return serializer.Deserialize<TMember>(reader, naming, ThrowOnFailedRead);
         }
 
 
-        protected bool TryGetMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, string memberName, out TMember result)
+        protected TMember DeserializeMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, string memberName)
         {
-            if (ThrowOnFailedRead)
-            {
-                result = serializer.Deserialize<TMember>(reader, naming, memberName);
-            }
-            else
-            {
-                result = serializer.DeserializeOrDefault<TMember>(reader, naming, memberName);
-            }
-
-            return true;
+            return serializer.Deserialize<TMember>(reader, naming, memberName, ThrowOnFailedRead);
         }
 
 
-        protected abstract bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref T result);
+        public TField DeserializeField<TField>(CsvReader reader, CsvHeaderNamingContext naming, string fieldName)
+        {
+            TField result;
+            if (reader.TryGetField<TField>(naming.Get(fieldName), out result))
+            {
+                return result;
+            }
+            else if (ThrowOnFailedRead)
+            {
+                throw new SerializationException($"Failed to deserialize field [{fieldName}] of type [{typeof(TField).FullName}] for type [{typeof(T).FullName}].");
+            }
+            else
+            {
+                return default(TField);
+            }
+        }
 
 
-        protected abstract void WriteCsvHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming);
+        protected abstract bool TryRead(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref T result);
+
+
+        protected abstract void WriteHeader(CsvWriter writer, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming);
 
 
         public sealed override void WriteCsvHeader(CsvWriter writer, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
         {
             int columnsCountBefore = writer.Context.Record.Count;
 
-            WriteCsvHeader(writer, serializer, naming);
-
+            WriteHeader(writer, objectType, serializer, naming);
+            
             int columnsCountAfter = writer.Context.Record.Count;
 
-            Columns = columnsCountAfter - columnsCountBefore;
+            Columns = Math.Max(columnsCountAfter - columnsCountBefore, 0);
         }
 
 
-        protected abstract void WriteCsv(T data, CsvWriter writer, CsvSerializerContext serializer);
+        protected abstract void Write(T data, CsvWriter writer, CsvSerializerContext serializer);
 
 
         public sealed override void WriteCsv(object data, CsvWriter writer, CsvSerializerContext serializer)
@@ -124,7 +125,7 @@ namespace UXI.Serialization.Csv.Converters
             {
                 try
                 {
-                    WriteCsv((T)data, writer, serializer);
+                    Write((T)data, writer, serializer);
                 }
                 catch (Exception exception)
                 {
