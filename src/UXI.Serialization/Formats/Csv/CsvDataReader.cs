@@ -27,12 +27,13 @@ namespace UXI.Serialization.Csv
 
         public Type DataType { get; }
 
+
         // TODO not in converters, will never work if object of other type is passed because no converter will be found
         public bool CanRead(Type objectType)
         {
             return DataType == objectType
-                || DataType.IsSubclassOf(objectType)
-                || objectType.IsAssignableFrom(DataType);
+                || DataType.IsSubclassOf(objectType)        // for inheritance
+                || objectType.IsAssignableFrom(DataType);   // for interface implementations
         }
 
 

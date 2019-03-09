@@ -12,15 +12,17 @@ namespace UXI.Serialization.Fakes.Csv.Converters
 {
     class CompositeObjectCsvConverter : CsvConverter<CompositeObject>
     {
-        protected override bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref CompositeObject result)
+        protected override bool TryRead(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref CompositeObject result)
         {
-            SingleIntValue single; 
+            SingleIntValue single;
             MultipleValues composite;
             double doubleValue;
 
-            if (TryGetMember<SingleIntValue>(reader, serializer, naming, nameof(CompositeObject.Single), out single)
+            if (
+                   TryGetMember<SingleIntValue>(reader, serializer, naming, nameof(CompositeObject.Single), out single)
                 && TryGetMember<MultipleValues>(reader, serializer, naming, nameof(CompositeObject.Composite), out composite)
-                && reader.TryGetField<double>(naming.Get(nameof(CompositeObject.Double)), out doubleValue))
+                && reader.TryGetField<double>(naming.Get(nameof(CompositeObject.Double)), out doubleValue)
+               )
             {
                 result = new CompositeObject()
                 {
@@ -35,14 +37,14 @@ namespace UXI.Serialization.Fakes.Csv.Converters
             return false;
         }
 
-        protected override void WriteCsv(CompositeObject data, CsvWriter writer, CsvSerializerContext serializer)
+        protected override void Write(CompositeObject data, CsvWriter writer, CsvSerializerContext serializer)
         {
             serializer.Serialize(writer, data.Single);
             serializer.Serialize(writer, data.Composite);
             writer.WriteField(data.Double);
         }
 
-        protected override void WriteCsvHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected override void WriteHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
         {
             serializer.WriteHeader<SingleIntValue>(writer, naming, nameof(CompositeObject.Single));
             serializer.WriteHeader<MultipleValues>(writer, naming, nameof(CompositeObject.Composite));

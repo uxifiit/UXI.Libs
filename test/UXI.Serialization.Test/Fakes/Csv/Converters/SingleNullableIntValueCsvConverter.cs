@@ -11,7 +11,7 @@ namespace UXI.Serialization.Fakes.Csv.Converters
 {
     class SingleNullableIntValueCsvConverter : CsvConverter<SingleNullableIntValue>
     {
-        protected override bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref SingleNullableIntValue result)
+        protected override bool TryRead(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref SingleNullableIntValue result)
         {
             int? value;
 
@@ -28,12 +28,12 @@ namespace UXI.Serialization.Fakes.Csv.Converters
             return false;
         }
 
-        protected override void WriteCsv(SingleNullableIntValue data, CsvWriter writer, CsvSerializerContext serializer)
+        protected override void Write(SingleNullableIntValue data, CsvWriter writer, CsvSerializerContext serializer)
         {
             writer.WriteField(data.Value);
         }
 
-        protected override void WriteCsvHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected override void WriteHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
         {
             writer.WriteField(naming.GetDefault(nameof(SingleNullableIntValue.Value)));
         }

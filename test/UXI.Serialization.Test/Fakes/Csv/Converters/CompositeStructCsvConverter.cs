@@ -11,7 +11,7 @@ namespace UXI.Serialization.Fakes.Csv.Converters
 {
     class CompositeStructCsvConverter : CsvConverter<CompositeStruct>
     {
-        protected override bool TryReadCsv(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref CompositeStruct result)
+        protected override bool TryRead(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref CompositeStruct result)
         {
             int id;
             double duration;
@@ -33,13 +33,13 @@ namespace UXI.Serialization.Fakes.Csv.Converters
             return false;
         }
 
-        protected override void WriteCsv(CompositeStruct data, CsvWriter writer, CsvSerializerContext serializer)
+        protected override void Write(CompositeStruct data, CsvWriter writer, CsvSerializerContext serializer)
         {
             writer.WriteField(data.Id);
             writer.WriteField(data.Duration);
         }
 
-        protected override void WriteCsvHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected override void WriteHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
         {
             writer.WriteField(naming.Get(nameof(CompositeStruct.Id)));
             writer.WriteField(naming.Get(nameof(CompositeStruct.Duration)));
