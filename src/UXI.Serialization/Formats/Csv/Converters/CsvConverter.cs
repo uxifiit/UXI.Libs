@@ -44,7 +44,7 @@ namespace UXI.Serialization.Csv.Converters
         public int Columns { get; protected set; }
 
 
-        public virtual bool ThrowOnFailedRead => false;
+        public virtual bool ThrowOnFailedRead { get; set; } = false;
 
 
         public sealed override object ReadCsv(CsvReader reader, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
