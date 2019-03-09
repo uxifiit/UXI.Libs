@@ -19,8 +19,21 @@ namespace UXI.Serialization.Csv
 
         public string HeaderNestingDelimiter { get; set; } = "";
 
+        /// <summary>
+        /// Gets or sets a boolean flag whether to throw SerializationException if no converter is available for deserializing requested type.
+        /// If set to false, the default EmptyConverter is used for that type, returning the default value (null or default for value types), if the deserialized type is the main type; 
+        /// or, if it is a member property, it is ignored. Default value is <b>true</b>.
+        /// </summary>
+        public bool ThrowIfNoConverterDefined { get; set; } = true;
 
-        public bool TryDeserialize(CsvHelper.CsvReader reader, Type dataType, CsvHeaderNamingContext naming, out object result)
+
+        /// <summary>
+        /// Gets or sets a boolean flag whether the converters should throw SerializationException if the read fails and the return value can not be null.
+        /// </summary>
+        public bool ThrowOnFailedDeserialize { get; set; } = false;
+
+
+        private bool TryDeserialize(CsvHelper.CsvReader reader, Type dataType, CsvHeaderNamingContext naming, out object result)
         {
             var converter = Converters.FirstOrDefault(c => c.CanConvert(dataType) && c.CanRead);
 
@@ -35,37 +48,20 @@ namespace UXI.Serialization.Csv
         }
 
 
-        public bool TryDeserialize<T>(CsvHelper.CsvReader reader, CsvHeaderNamingContext naming, out T result)
+        public object Deserialize(CsvHelper.CsvReader reader, Type dataType)
         {
-            object output;
-
-            bool deserialized = TryDeserialize(reader, typeof(T), naming, out output);
-
-            result = (T)output;
-            return deserialized;
+            return Deserialize(reader, dataType, new CsvHeaderNamingContext(Configuration.PrepareHeaderForMatch));
         }
 
 
-        public bool TryDeserialize<T>(CsvHelper.CsvReader reader, CsvHeaderNamingContext naming, string referenceName, out T result)
+        public object Deserialize(CsvHelper.CsvReader reader, Type dataType, CsvHeaderNamingContext naming)
         {
-            return TryDeserialize<T>(reader, naming.GetNextLevel(referenceName, HeaderNestingDelimiter), out result);
-        }
-
-
-        public object Deserialize(CsvHelper.CsvReader reader, Type dataType, bool throwIfNoConverterDefined)
-        {
-            return Deserialize(reader, dataType, new CsvHeaderNamingContext(Configuration.PrepareHeaderForMatch), throwIfNoConverterDefined);
-        }
-
-
-        public object Deserialize(CsvHelper.CsvReader reader, Type dataType, CsvHeaderNamingContext naming, bool throwIfNoConverterDefined)
-        {
-            object result;
-            if (TryDeserialize(reader, dataType, naming, out result))
+            var converter = Converters?.FirstOrDefault(c => c.CanConvert(dataType) && c.CanRead);
+            if (converter != null)
             {
-                return result;
+                return converter.ReadCsv(reader, dataType, this, naming);
             }
-            else if (throwIfNoConverterDefined)
+            else if (ThrowIfNoConverterDefined)
             {
                 throw new ArgumentOutOfRangeException(nameof(dataType), $"No converter defined for the requested type '{dataType.FullName}' to deserialize.");
             }
@@ -76,15 +72,15 @@ namespace UXI.Serialization.Csv
         }
 
 
-        public T Deserialize<T>(CsvHelper.CsvReader reader, CsvHeaderNamingContext naming, bool throwIfNoConverterDefined)
+        public T Deserialize<T>(CsvHelper.CsvReader reader, CsvHeaderNamingContext naming)
         {
-            return (T)Deserialize(reader, typeof(T), naming, throwIfNoConverterDefined);
+            return (T)Deserialize(reader, typeof(T), naming);
         }
 
 
-        public T Deserialize<T>(CsvHelper.CsvReader reader, CsvHeaderNamingContext naming, string referenceName, bool throwIfNoConverterDefined)
+        public T Deserialize<T>(CsvHelper.CsvReader reader, CsvHeaderNamingContext naming, string referenceName)
         {
-            return (T)Deserialize(reader, typeof(T), naming.GetNextLevel(referenceName, HeaderNestingDelimiter), throwIfNoConverterDefined);
+            return (T)Deserialize(reader, typeof(T), naming.GetNextLevel(referenceName, HeaderNestingDelimiter));
         }
 
 

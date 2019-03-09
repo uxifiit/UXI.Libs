@@ -14,13 +14,15 @@ namespace UXI.Serialization.Fakes.Csv.Converters
     {
         protected override bool TryRead(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref CompositeObject result)
         {
-            SingleIntValue single; 
+            SingleIntValue single;
             MultipleValues composite;
             double doubleValue;
 
-            if (TryGetMember<SingleIntValue>(reader, serializer, naming, nameof(CompositeObject.Single), out single)
+            if (
+                   TryGetMember<SingleIntValue>(reader, serializer, naming, nameof(CompositeObject.Single), out single)
                 && TryGetMember<MultipleValues>(reader, serializer, naming, nameof(CompositeObject.Composite), out composite)
-                && reader.TryGetField<double>(naming.Get(nameof(CompositeObject.Double)), out doubleValue))
+                && reader.TryGetField<double>(naming.Get(nameof(CompositeObject.Double)), out doubleValue)
+               )
             {
                 result = new CompositeObject()
                 {

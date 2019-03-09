@@ -30,7 +30,6 @@ namespace UXI.Serialization.Csv.Converters
     }
 
 
-
     public abstract class CsvConverter<T> : CsvConverter
     {
         public override bool CanConvert(Type objectType)
@@ -51,11 +50,12 @@ namespace UXI.Serialization.Csv.Converters
         public sealed override object ReadCsv(CsvReader reader, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
         {
             T result = default(T);
+
             if (TryRead(reader, serializer, naming, ref result))
             {
                 return result;
             }
-            else if (TypeHelper.CanBeNull(objectType) == false || ThrowOnFailedRead)
+            else if (TypeHelper.CanBeNull(objectType) == false && (ThrowOnFailedRead || serializer.ThrowOnFailedDeserialize))
             {
                 throw new SerializationException($"Failed to read the data of type [{objectType.FullName}] with the converter for type [{typeof(T).FullName}].");
             }
@@ -68,47 +68,24 @@ namespace UXI.Serialization.Csv.Converters
         }
 
 
-        protected TMember DeserializeMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
+        protected bool TryGetMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, string name, out TMember member)
         {
-            return serializer.Deserialize<TMember>(reader, naming, ThrowOnFailedRead);
-        }
-
-
-        protected TMember DeserializeMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, string memberName)
-        {
-            return serializer.Deserialize<TMember>(reader, naming, memberName, ThrowOnFailedRead);
-        }
-
-
-        public TField DeserializeField<TField>(CsvReader reader, CsvHeaderNamingContext naming, string fieldName)
-        {
-            TField result;
-            if (reader.TryGetField<TField>(naming.Get(fieldName), out result))
-            {
-                return result;
-            }
-            else if (ThrowOnFailedRead)
-            {
-                throw new SerializationException($"Failed to deserialize field [{fieldName}] of type [{typeof(TField).FullName}] for type [{typeof(T).FullName}].");
-            }
-            else
-            {
-                return default(TField);
-            }
+            member = serializer.Deserialize<TMember>(reader, naming, name);
+            return true;
         }
 
 
         protected abstract bool TryRead(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, ref T result);
 
 
-        protected abstract void WriteHeader(CsvWriter writer, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming);
+        protected abstract void WriteHeader(CsvWriter writer, CsvSerializerContext serializer, CsvHeaderNamingContext naming);
 
 
         public sealed override void WriteCsvHeader(CsvWriter writer, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
         {
             int columnsCountBefore = writer.Context.Record.Count;
 
-            WriteHeader(writer, objectType, serializer, naming);
+            WriteHeader(writer, serializer, naming);
             
             int columnsCountAfter = writer.Context.Record.Count;
 
