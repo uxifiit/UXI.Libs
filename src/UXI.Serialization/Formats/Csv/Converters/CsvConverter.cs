@@ -68,6 +68,13 @@ namespace UXI.Serialization.Csv.Converters
         }
 
 
+        protected bool TryGetMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, out TMember member)
+        {
+            member = serializer.Deserialize<TMember>(reader, naming);
+            return true;
+        }
+
+
         protected bool TryGetMember<TMember>(CsvReader reader, CsvSerializerContext serializer, CsvHeaderNamingContext naming, string name, out TMember member)
         {
             member = serializer.Deserialize<TMember>(reader, naming, name);
