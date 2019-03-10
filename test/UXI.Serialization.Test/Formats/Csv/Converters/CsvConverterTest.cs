@@ -350,7 +350,7 @@ namespace UXI.Serialization.Csv.Converters
         [TestMethod]
         public void ReadCsv_ClassWithNullableCompositeStruct_ObjectsWithNullValues()
         {
-            var serializer = new CsvSerializerContext();
+            var serializer = new CsvSerializerContext() { ThrowOnFailedDeserialize = false };
             var converter = new SingleNullableStructValueCsvConverter();
             serializer.Converters.Add(converter);
             serializer.Converters.Add(new CompositeStructCsvConverter());
@@ -593,7 +593,7 @@ namespace UXI.Serialization.Csv.Converters
         [TestMethod]
         public void ReadCsv_CompositeObject_RecordsWithNullValues()
         {
-            var serializer = new CsvSerializerContext();
+            var serializer = new CsvSerializerContext() { ThrowOnFailedDeserialize = false };
             var converter = new CompositeObjectCsvConverter();
             serializer.Converters.Add(converter);
             serializer.Converters.Add(new SingleIntValueCsvConverter());
@@ -656,7 +656,7 @@ namespace UXI.Serialization.Csv.Converters
         [TestMethod]
         public void ReadCsv_CompositeObject_MissingMember_RecordsWithNullValues()
         {
-            var serializer = new CsvSerializerContext();
+            var serializer = new CsvSerializerContext() { ThrowOnFailedDeserialize = false };
             var converter = new CompositeObjectCsvConverter();
             serializer.Converters.Add(converter);
             serializer.Converters.Add(new SingleIntValueCsvConverter());
