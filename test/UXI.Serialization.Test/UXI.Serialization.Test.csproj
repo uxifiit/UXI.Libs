@@ -57,6 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataIOTest.cs" />
     <Compile Include="Fakes\CompositeObject.cs" />
     <Compile Include="Fakes\CompositeStruct.cs" />
     <Compile Include="Fakes\Csv\Converters\CompositeStructCsvConverter.cs" />

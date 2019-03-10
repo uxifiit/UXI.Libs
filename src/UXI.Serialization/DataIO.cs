@@ -94,11 +94,11 @@ namespace UXI.Serialization
 
         public FileFormat EnsureCorrectFileFormat(string filename, FileFormat requestedFormat)
         {
-            string extension = Path.GetExtension(filename)?.ToLower();
+            string extension = Path.GetExtension(filename)?.TrimStart('.');
 
             if (String.IsNullOrWhiteSpace(extension) == false)
             {
-                var matchingFormat = _formats.Where(f => f.Key.ToString().ToLower() == extension)
+                var matchingFormat = _formats.Where(f => f.Key.ToString().Equals(extension, StringComparison.CurrentCultureIgnoreCase))
                                              .Select(f => f.Value)
                                              .FirstOrDefault();
 
