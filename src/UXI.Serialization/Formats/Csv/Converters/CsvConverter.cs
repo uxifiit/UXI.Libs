@@ -44,7 +44,11 @@ namespace UXI.Serialization.Csv.Converters
         public int Columns { get; protected set; }
 
 
-        public virtual bool ThrowOnFailedRead { get; set; } = false;
+        /// <summary>
+        /// Gets or sets a boolean flag determining whether the SerializationException should be thrown, if both the data can not be read and the return value can not be null.
+        /// If not set, converter relies on the ThrowOnFailedDeserialize property of the calling serializer. Default value is <b>null</b>, use the serializer settings.
+        /// </summary>
+        public virtual bool? ThrowOnFailedRead { get; set; } = null;
 
 
         public sealed override object ReadCsv(CsvReader reader, Type objectType, CsvSerializerContext serializer, CsvHeaderNamingContext naming)
@@ -55,7 +59,9 @@ namespace UXI.Serialization.Csv.Converters
             {
                 return result;
             }
-            else if (TypeHelper.CanBeNull(objectType) == false && (ThrowOnFailedRead || serializer.ThrowOnFailedDeserialize))
+            else if (TypeHelper.CanBeNull(objectType) == false
+                    && serializer.ThrowOnFailedDeserialize 
+                    && (ThrowOnFailedRead.HasValue == false || ThrowOnFailedRead.Value))
             {
                 throw new SerializationException($"Failed to read the data of type [{objectType.FullName}] with the converter for type [{typeof(T).FullName}].");
             }

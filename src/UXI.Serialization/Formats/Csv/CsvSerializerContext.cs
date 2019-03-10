@@ -28,9 +28,10 @@ namespace UXI.Serialization.Csv
 
 
         /// <summary>
-        /// Gets or sets a boolean flag whether the converters should throw SerializationException if the read fails and the return value can not be null.
+        /// Gets or sets a boolean flag whether the converters should throw SerializationException if the converter fails reading data and the return value can not be null.
+        /// Default value is <b>true</b>.
         /// </summary>
-        public bool ThrowOnFailedDeserialize { get; set; } = false;
+        public bool ThrowOnFailedDeserialize { get; set; } = true;
 
 
         private bool TryDeserialize(CsvHelper.CsvReader reader, Type dataType, CsvHeaderNamingContext naming, out object result)

@@ -19,6 +19,17 @@ namespace UXI.Serialization.Common
         }
 
 
+        public static bool IsNullable(Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            return type.IsValueType && (Nullable.GetUnderlyingType(type) != null);
+        }
+
+
         public static object GetDefault(Type type)
         {
             if (type.IsValueType)
