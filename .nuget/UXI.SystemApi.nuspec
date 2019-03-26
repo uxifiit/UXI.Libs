@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>UXI.SystemApi</id>
-    <version>0.2.2</version>
+    <version>0.3.0</version>
     <title>UXI.SystemApi</title>
     <authors>UXI Dev</authors>
     <owners>UXI FIIT STUBA</owners>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Library with WinApi wrappers</description>
-    <releaseNotes>Added Job.</releaseNotes>
+    <releaseNotes>Added ProcessInterop to allow opening separate process from a parent process in the Job.</releaseNotes>
     <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
     <tags>MouseCoordinatesHook Job</tags>
     <dependencies />
