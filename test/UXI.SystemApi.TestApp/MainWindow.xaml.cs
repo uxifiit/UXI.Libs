@@ -52,10 +52,15 @@ namespace UXI.SystemApi.TestApp
         }
 
 
-        private void SpawnProcessButton_Click(object sender, RoutedEventArgs args)
+        private void CreateChildProcessButton_Click(object sender, RoutedEventArgs args)
         {
-            var process = Process.Start("notepad.exe");
-          //  _job.AddProcess(process.Id);
+            Process.Start("notepad.exe", "text_child.txt");
+        }
+
+
+        private void CreateSeparateProcessButton_Click(object sender, RoutedEventArgs args)
+        {
+            ProcessInterop.CreateProcess(System.Environment.GetEnvironmentVariable("ComSpec"), "/C start notepad.exe text_separate.txt", true, true);
         }
     }
 }

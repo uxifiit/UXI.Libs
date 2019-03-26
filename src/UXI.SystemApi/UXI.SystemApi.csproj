@@ -43,6 +43,7 @@
     <Compile Include="JobInterop.cs" />
     <Compile Include="Mouse\MouseCoordinatesHook.cs" />
     <Compile Include="Point.cs" />
+    <Compile Include="ProcessInterop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen\IScreenParametersProvider.cs" />
     <Compile Include="Screen\ScreenInfo.cs" />

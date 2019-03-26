@@ -67,11 +67,16 @@
             
             <TextBlock Text="Job" FontWeight="Bold" />
 
-            <Button Content="Spawn new process"
-                    Click="SpawnProcessButton_Click"
+            <Button Content="Create child process"
+                    Click="CreateChildProcessButton_Click"
                     Grid.Row="1"
                     HorizontalAlignment="Left"/>
 
+            <Button Content="Create separate process"
+                    Click="CreateSeparateProcessButton_Click"
+                    Grid.Row="2"
+                    HorizontalAlignment="Left"/>
+            
             <!--<ItemsControl Name="processes">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
