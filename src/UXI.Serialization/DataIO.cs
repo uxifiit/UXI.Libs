@@ -29,6 +29,23 @@ namespace UXI.Serialization
             FileFormat format = EnsureCorrectFileFormat(filePath, fileFormat);
 
             using (var reader = FileHelper.CreateInputReader(filePath))
+            {
+                foreach (var item in ReadInput(reader, format, dataType, settings))
+                {
+                    yield return item;
+                }
+            }
+        }
+
+
+        public IEnumerable<T> ReadInput<T>(string filePath, FileFormat fileFormat, object settings)
+        {
+            return ReadInput(filePath, fileFormat, typeof(T), settings).OfType<T>();
+        }
+
+
+        public IEnumerable<object> ReadInput(TextReader reader, FileFormat format, Type dataType, object settings)
+        {
             using (var dataReader = GetInputDataReader(reader, format, dataType, settings))
             {
                 object data;
@@ -42,9 +59,9 @@ namespace UXI.Serialization
         }
 
 
-        public IEnumerable<T> ReadInput<T>(string filePath, FileFormat fileFormat, object settings)
+        public IEnumerable<T> ReadInput<T>(TextReader reader, FileFormat format, Type dataType, object settings)
         {
-            return ReadInput(filePath, fileFormat, typeof(T), settings).OfType<T>();
+            return ReadInput(reader, format, dataType, settings).OfType<T>();
         }
 
 
@@ -61,12 +78,19 @@ namespace UXI.Serialization
         }
 
 
-     
         public void WriteOutput(IEnumerable<object> data, string filePath, FileFormat fileFormat, Type dataType, object settings)
         {
             FileFormat format = EnsureCorrectFileFormat(filePath, fileFormat);
 
             using (var writer = FileHelper.CreateOutputWriter(filePath))
+            {
+                WriteOutput(data, writer, format, dataType, settings);
+            }
+        }
+
+
+        public void WriteOutput(IEnumerable<object> data, TextWriter writer, FileFormat format, Type dataType, object settings)
+        {
             using (var dataWriter = GetOutputDataWriter(writer, format, dataType, settings))
             {
                 foreach (var item in data)

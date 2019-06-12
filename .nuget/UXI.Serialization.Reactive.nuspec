@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>UXI.Serialization.Reactive</id>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <title>UXI.Serialization.Reactive</title>
     <authors>UXI Dev</authors>
     <owners>UXI FIIT STUBA</owners>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Additional support for Reactive Extensions (System.Reactive) to the UXI.Serialization library.</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Added overload with TextReader and TextWriter insted of file paths, updated DataIORx methods to be extension methods.</releaseNotes>
     <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
     <tags>reactive serialization json csv</tags>
     <dependencies>

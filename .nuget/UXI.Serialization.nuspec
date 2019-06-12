@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>UXI.Serialization</id>
-    <version>1.5.2</version>
+    <version>1.6.0</version>
     <title>UXI.Serialization</title>
     <authors>UXI Dev</authors>
     <owners>UXI FIIT STUBA</owners>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Base library for data serialization in different formats wrapped to the same interface. Supports JSON and CSV formats.</description>
-    <releaseNotes>Updated CSV converter to support nullables.</releaseNotes>
+    <releaseNotes>Added overloads with TextReader and TextWriter instead of file paths.</releaseNotes>
     <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
     <tags>serialization json csv</tags>
     <dependencies>
