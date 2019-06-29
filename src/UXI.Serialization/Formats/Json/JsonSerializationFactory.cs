@@ -43,7 +43,7 @@ namespace UXI.Serialization.Json
         }
 
 
-        public IDataWriter CreateWriterForType(TextWriter writer, Type dataType, object settings) //, SerializationConfiguration configuration)
+        public IDataWriter CreateWriterForType(TextWriter writer, Type dataType, object settings)
         {
             var serializer = CreateSerializer(DataAccess.Write, settings);
 
@@ -58,7 +58,7 @@ namespace UXI.Serialization.Json
                 Culture = System.Globalization.CultureInfo.GetCultureInfo("en-US")
             };
 
-            foreach (var configuration in Configurations)
+            foreach (var configuration in Configurations.ToArray())
             {
                 serializer = (JsonSerializer)configuration.Configure(serializer, access, settings)
                            ?? serializer;

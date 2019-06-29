@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Common\DisposableBase.cs" />
     <Compile Include="Common\TypeHelper.cs" />
+    <Compile Include="Extensions\IDictionaryEx.cs" />
     <Compile Include="Formats\Csv\Configurations\CsvHeaderToLowerCaseSerializationConfiguration.cs" />
     <Compile Include="ISerializationConfiguration.cs" />
     <Compile Include="Configurations\RelaySerializationConfiguration.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="IDataWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Configurations\SerializationConfiguration.cs" />
+    <Compile Include="SerializationFactoryCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

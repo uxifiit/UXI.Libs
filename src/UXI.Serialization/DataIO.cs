@@ -9,9 +9,6 @@ namespace UXI.Serialization
 {
     public class DataIO
     {
-        private readonly Dictionary<FileFormat, ISerializationFactory> _formats;
-
-
         public DataIO(params ISerializationFactory[] factories)
             : this(factories?.AsEnumerable())
         {
@@ -20,8 +17,11 @@ namespace UXI.Serialization
 
         public DataIO(IEnumerable<ISerializationFactory> factories)
         {
-            _formats = factories?.ToDictionary(f => f.Format) ?? new Dictionary<FileFormat, ISerializationFactory>();
+            Formats = factories?.ToDictionary(f => f.Format) ?? new Dictionary<FileFormat, ISerializationFactory>();
         }
+
+
+        public IDictionary<FileFormat, ISerializationFactory> Formats { get; }
 
 
         public IEnumerable<object> ReadInput(string filePath, FileFormat fileFormat, Type dataType, object settings)
@@ -69,7 +69,7 @@ namespace UXI.Serialization
         {
             ISerializationFactory factory;
 
-            if (_formats.TryGetValue(fileType, out factory))
+            if (Formats.TryGetValue(fileType, out factory))
             {
                 return factory.CreateReaderForType(reader, dataType, settings);
             }
@@ -107,7 +107,7 @@ namespace UXI.Serialization
         {
             ISerializationFactory factory;
 
-            if (_formats.TryGetValue(fileType, out factory))
+            if (Formats.TryGetValue(fileType, out factory))
             {
                 return factory.CreateWriterForType(writer, dataType, settings);
             }
@@ -122,9 +122,9 @@ namespace UXI.Serialization
 
             if (String.IsNullOrWhiteSpace(extension) == false)
             {
-                var matchingFormat = _formats.Where(f => f.Key.ToString().Equals(extension, StringComparison.CurrentCultureIgnoreCase))
-                                             .Select(f => f.Value)
-                                             .FirstOrDefault();
+                var matchingFormat = Formats.Where(f => f.Key.ToString().Equals(extension, StringComparison.CurrentCultureIgnoreCase))
+                                            .Select(f => f.Value)
+                                            .FirstOrDefault();
 
                 return matchingFormat != null && matchingFormat.Format != requestedFormat
                      ? matchingFormat.Format

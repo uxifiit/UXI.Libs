@@ -58,7 +58,7 @@ namespace UXI.Serialization.Csv
 
             serializer.Configuration.CultureInfo = System.Globalization.CultureInfo.GetCultureInfo("en-US");
 
-            foreach (var configuration in Configurations)
+            foreach (var configuration in Configurations.ToArray())
             {
                 serializer = (CsvSerializerContext)configuration.Configure(serializer, access, settings)
                            ?? serializer;
