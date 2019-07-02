@@ -15,9 +15,12 @@ namespace UXI.Serialization.Csv
     {
         public CsvHelper.Configuration.Configuration Configuration { get; set; } = new CsvHelper.Configuration.Configuration();
 
+
         public Collection<CsvConverter> Converters { get; set; } = new Collection<CsvConverter>();
 
+
         public string HeaderNestingDelimiter { get; set; } = "";
+
 
         /// <summary>
         /// Gets or sets a boolean flag whether to throw SerializationException if no converter is available for deserializing requested type.
@@ -28,8 +31,8 @@ namespace UXI.Serialization.Csv
 
 
         /// <summary>
-        /// Gets or sets a boolean flag whether the converters should throw SerializationException if the converter fails reading data and the return value can not be null.
-        /// Default value is <b>false</b>.
+        /// Gets or sets a boolean flag whether the converters should throw SerializationException if data conversion fails and the field is of a non-nullable type.
+        /// If set to true, the exception is thrown; otherwise, the field is set to the default value of its type. Default value for this property is <b>false</b>. 
         /// </summary>
         public bool ThrowOnFailedDeserialize { get; set; } = false;
 

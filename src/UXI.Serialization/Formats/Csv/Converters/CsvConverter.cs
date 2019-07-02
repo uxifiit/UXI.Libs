@@ -45,8 +45,8 @@ namespace UXI.Serialization.Csv.Converters
 
 
         /// <summary>
-        /// Gets or sets a boolean flag determining whether the SerializationException should be thrown, if both the data can not be read and the return value can not be null.
-        /// If not set, converter relies on the ThrowOnFailedDeserialize property of the calling serializer. Default value is <b>null</b>, use the serializer settings.
+        /// Gets or sets a boolean flag determining whether the SerializationException should be thrown, if both the data can not be read and the return value is of a non-nullable type.
+        /// If not set, converter relies on the ThrowOnFailedDeserialize property of the calling serializer. Default value is <b>null</b> and the serializer settings are used.
         /// </summary>
         public virtual bool? ThrowOnFailedRead { get; set; } = null;
 
@@ -67,8 +67,8 @@ namespace UXI.Serialization.Csv.Converters
             }
             else
             {
-                // Requested objectType can be Nullable<T>, if the converter generic type T is struct.
-                // Instead of returning just default(T), we must construct the correct default value.
+                // Instead of returning just default(T), we must construct the correct default value more robustly.
+                // For example, requested objectType can be Nullable<T>, if the converter generic type T is struct.
                 return TypeHelper.GetDefault(objectType);
             }
         }
