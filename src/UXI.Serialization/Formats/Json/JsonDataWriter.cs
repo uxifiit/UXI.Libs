@@ -42,12 +42,20 @@ namespace UXI.Serialization.Json
         {
             if (_isOpen)
             {
-                object cachedData;
-                if (_cache != null && _cache.TryDequeue(out cachedData))
-                {
-                    _cache = null;
+                // Check cache before closing. If it is non-empty, the serializer was called for write only once, 
+                // what means it should serialize a single item, not an array. To not leave out the single item, 
+                // it is serialized here before closing the writer.
 
-                    _serializer.Serialize(_writer, cachedData);
+                ConcurrentQueue<object> cache = _cache;
+                _cache = null;
+
+                if (cache != null)
+                {
+                    object cachedData;
+                    if (cache.TryDequeue(out cachedData))
+                    {
+                        _serializer.Serialize(_writer, cachedData);
+                    }
                 }
 
                 _isOpen = false;
@@ -61,15 +69,22 @@ namespace UXI.Serialization.Json
         {
             if (_isOpen)
             {
-                if (_cache != null)
+                // First check the cache. If it is first write, cache the object and do not serialize it yet.
+                // If it is second write, first take the cached item, serialize it, then serialize the new data. Remove cache after second write.
+                // The cache is used for disambiguation whether the serializer writes an array or a single item.
+
+                // TODO This is not ideal solution to concurrent access to the cache, but is ok for now.
+                ConcurrentQueue<object> cache = _cache;
+                if (cache != null)
                 {
                     object cachedData = null;
-                    if (_cache?.IsEmpty == true)
+
+                    if (cache.IsEmpty)
                     {
-                        _cache.Enqueue(data);
+                        cache.Enqueue(data);
                         return;
                     }
-                    else if (_cache?.TryDequeue(out cachedData) == true)
+                    else if (cache.TryDequeue(out cachedData))
                     {
                         _cache = null;
 

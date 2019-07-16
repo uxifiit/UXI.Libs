@@ -65,7 +65,7 @@ namespace UXI.Serialization.Reactive
             return Observable.Using(() => io.GetOutputDataWriter(writer, format, dataType, settings), (IDataWriter dataWriter) =>
             {
                 return data.Finally(dataWriter.Close)
-                            .Do(d => dataWriter.Write(d));
+                           .Do(d => dataWriter.Write(d));
             });
         }
     }
