@@ -1,8 +1,10 @@
 # UXIsk Common Libraries
 
-This repository contains multiple libraries with utility and helper classes that are used in the UXR infrastructure. 
+[![Build Status](https://dev.azure.com/uxifiit/Libs/_apis/build/status/uxifiit.UXI.Libs?branchName=master)](https://dev.azure.com/uxifiit/Libs/_build/latest?definitionId=3&branchName=master)
 
-To use these libraries in your projects, add them as a NuGet reference from the UXIsk MyGet feed. 
+This repository contains common libraries for projects of the UXIsk software infrastructure. 
+
+To use these libraries in your projects, add them as a NuGet reference. 
 
 |Library |Package|Description|
 |--------|:-----:|-----------|
