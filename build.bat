@@ -1,41 +1,63 @@
-echo off
+@echo off
 
-set config=%1
-if "%config%" == "" (
+REM First find the latest version of MSBuild.exe in predefined locations.
+REM Result is stored in the %msbuild% variable.
+
+for %%f in (
+    "%programfiles(x86)%\MSBuild\14.0\Bin\MSBuild.exe"
+    "%programfiles(x86)%\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"
+) do ( 
+    if exist %%f (
+        set msbuild=%%f
+        goto AfterMSBuildLookup
+    )
+)
+
+:AfterMSBuildLookup
+
+if not defined msbuild (
+    echo MSBuild.exe not found
+    pause
+    exit /b
+)
+
+
+REM Set working directory (wd) to the path in the 1st argument of the script.
+REM If no argument is defined, current directory of the caller (env. variable CD) is used.
+set wd=%~1
+if not defined wd (
+    set wd=%CD%
+)
+
+set config=%~2
+if not defined config (
    set config=Release
 )
 
-set version=
-if not "%PackageVersion%" == "" (
-   set version=-Version %PackageVersion%
+
+REM Find solution files in the current directory and 
+for /F "delims=|" %%s in (
+    'dir "%wd%\*.sln" /B'
+) do (
+    REM Restore packages
+    call "%nuget%" restore "%wd%\%%s" -NonInteractive
+    
+    REM Build
+    call %msbuild% "%wd%\%%s" /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:false
 )
 
-REM Restore packages
-call "%nuget%" restore UXI.Libs.sln -NonInteractive
-
-REM Build
-"%programfiles(x86)%\MSBuild\14.0\Bin\MSBuild.exe" UXI.Libs.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:false
 
 REM Package
-mkdir Build
+set nuspecs=.nuget
 
-for %%p in (
-UXI.App
-UXI.Common
-UXI.Common.UI
-UXI.Common.Web
-UXI.Common.WebApi
-UXI.Configuration
-UXI.Configuration.IniStorage
-UXI.CQRS
-UXI.CQRS.EntityFramework
-UXI.IO
-UXI.IO.NTFS
-UXI.OwinServer
-UXI.Serialization
-UXI.Serialization.Reactive
-UXI.SystemApi
-UXI.ZIP
-) do (
-	call "%nuget%" pack ".nuget\%%p.nuspec" -Symbols -OutputDirectory build -Properties Configuration=%config% 
+if /I [%config%]==[release] (
+    mkdir "%wd%\Build"
+
+    echo "%wd%\%nuspecs%\*.nuspec"
+
+    for /F "delims=|" %%p in ( 
+        'dir "%wd%\%nuspecs%\*.nuspec" /B'
+    ) do ( 
+        call "%nuget%" pack "%wd%\%nuspecs%\%%p" -Symbols -OutputDirectory "%wd%\Build" -Properties Configuration=%config% 
+    )
 )
