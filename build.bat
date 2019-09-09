@@ -48,16 +48,12 @@ for /F "delims=|" %%s in (
 
 
 REM Package
+mkdir "%wd%\Build"
+
 set nuspecs=.nuget
 
-if /I [%config%]==[release] (
-    mkdir "%wd%\Build"
-
-    echo "%wd%\%nuspecs%\*.nuspec"
-
-    for /F "delims=|" %%p in ( 
-        'dir "%wd%\%nuspecs%\*.nuspec" /B'
-    ) do ( 
-        call "%nuget%" pack "%wd%\%nuspecs%\%%p" -Symbols -OutputDirectory "%wd%\Build" -Properties Configuration=%config% 
-    )
+for /F "delims=|" %%p in ( 
+    'dir "%wd%\%nuspecs%\*.nuspec" /B'
+) do ( 
+    call "%nuget%" pack "%wd%\%nuspecs%\%%p" -Symbols -OutputDirectory "%wd%\Build" -Properties Configuration=%config% 
 )
