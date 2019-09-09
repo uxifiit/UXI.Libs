@@ -17,9 +17,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.ZIP", "src\UXI.ZIP\UXI.ZIP.csproj", "{A1063821-DC98-4127-9E6A-0826CD507363}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DBF634C4-AEC3-474B-BAB6-813D25656A71}"
-	ProjectSection(SolutionItems) = preProject
-		test\test.runsettings = test\test.runsettings
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.OwinServer", "src\UXI.OwinServer\UXI.OwinServer.csproj", "{51CD5788-D705-4713-97DC-542B7D4A50DD}"
 EndProject

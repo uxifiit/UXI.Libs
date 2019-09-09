@@ -9,7 +9,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UXI.ZIP.Test
 {
     [TestClass]
-    [DeploymentItem(@"testfiles\", "testfiles")]
     public class ZipHelperTest
     {
         private const string TEMP_DIR_NAME = "temp";
@@ -17,50 +16,94 @@ namespace UXI.ZIP.Test
         private const string SESSION_EXPORT_ITEM_NAME = "SessionExport";
         private const string SESSION_EXPORT_ZIP_FILENAME = SESSION_EXPORT_ITEM_NAME + ".zip";
 
+        private static string GetAssemblyPath()
+        {
+            return Path.GetDirectoryName(Assembly.GetAssembly(typeof(ZipHelperTest)).Location);
+        }
 
-        //private readonly string TempDirectoryLocation = Path.Combine(Path.GetDirectoryName(Assembly.GetAssembly(typeof(ZipHelperTest)).Location), TEMP_DIR_NAME);
-        //private readonly string TestFilesDirectoryLocation = Path.Combine(Path.GetDirectoryName(Assembly.GetAssembly(typeof(ZipHelperTest)).Location), TESTFILES_DIR_NAME);
+        private readonly string TempDirectoryFullPath = Path.Combine(GetAssemblyPath(), TEMP_DIR_NAME);
+        private readonly string TestFilesDirectoryFullPath = Path.Combine(GetAssemblyPath(), TESTFILES_DIR_NAME);
+
+
+        private void CreateDummyFile(string directory, string filename, int sizeInKilobytes)
+        {
+            if (Directory.Exists(directory) == false)
+            {
+                throw new DirectoryNotFoundException($"Target directory does not exist at: {directory}");
+            }
+
+            string path = Path.Combine(directory, filename);
+
+            const int seed = 17;
+            var random = new Random(seed);
+            byte[] buffer = new byte[1024];
+
+            using (var fs = new FileStream(path, FileMode.Create))
+            {
+                while (sizeInKilobytes-- > 0)
+                {
+                    random.NextBytes(buffer);
+                    fs.Write(buffer, 0, 1024);
+                }
+                fs.Close();
+            }
+        }
 
         [TestInitialize]
         public void Initialize()
         {
-            if (Directory.Exists(TEMP_DIR_NAME) == false)
-            {
-                Directory.CreateDirectory(TEMP_DIR_NAME);
-            }
+            Directory.CreateDirectory(TestFilesDirectoryFullPath);
+
+            string sessionFiles = Path.Combine(TestFilesDirectoryFullPath, SESSION_EXPORT_ITEM_NAME);
+            Directory.CreateDirectory(sessionFiles);
+
+            CreateDummyFile(sessionFiles, "ET_data.json", 10 * 1024);
+            CreateDummyFile(sessionFiles, "ET_status.json", 100);
+            CreateDummyFile(sessionFiles, "session.json", 1 * 1024);
+            CreateDummyFile(sessionFiles, "empty_file.txt", 0); 
+
+            Directory.CreateDirectory(TempDirectoryFullPath);
         }
+
 
         [TestCleanup]
         public void Cleanup()
         {
-            if (Directory.Exists(TEMP_DIR_NAME))
+            if (Directory.Exists(TestFilesDirectoryFullPath))
             {
-                Directory.Delete(TEMP_DIR_NAME, true);
+                Directory.Delete(TestFilesDirectoryFullPath, true);
+            }
+
+            if (Directory.Exists(TempDirectoryFullPath))
+            {
+                Directory.Delete(TempDirectoryFullPath, true);
             }
         }
+
 
         [TestMethod]
         public void TryPack_FolderToSingleArchiveTest()
         {
             bool packed = ZipHelper.TryPack
             (
-                fileName: Path.Combine(TEMP_DIR_NAME, SESSION_EXPORT_ZIP_FILENAME), 
-                folderPath: Path.Combine(TESTFILES_DIR_NAME, SESSION_EXPORT_ITEM_NAME), 
+                fileName: Path.Combine(TempDirectoryFullPath, SESSION_EXPORT_ZIP_FILENAME), 
+                folderPath: Path.Combine(TestFilesDirectoryFullPath, SESSION_EXPORT_ITEM_NAME), 
                 progress: new Progress<int>(), 
                 cancellationToken: CancellationToken.None
             );
 
             Assert.IsTrue(packed, $"{nameof(ZipHelper)}.{nameof(ZipHelper.Pack)} failed to pack folder.");
-            Assert.IsTrue(File.Exists(Path.Combine(TEMP_DIR_NAME, SESSION_EXPORT_ZIP_FILENAME)));
+            Assert.IsTrue(File.Exists(Path.Combine(TempDirectoryFullPath, SESSION_EXPORT_ZIP_FILENAME)));
         }
+
 
         [TestMethod]
         public void Pack_FolderToSingleArchiveSegmentTest()
         {
             IEnumerable<string> files = ZipHelper.Pack
             (
-                fileName: Path.Combine(TEMP_DIR_NAME, SESSION_EXPORT_ZIP_FILENAME),
-                folderPath: Path.Combine(TESTFILES_DIR_NAME, SESSION_EXPORT_ITEM_NAME),
+                fileName: Path.Combine(TempDirectoryFullPath, SESSION_EXPORT_ZIP_FILENAME),
+                folderPath: Path.Combine(TestFilesDirectoryFullPath, SESSION_EXPORT_ITEM_NAME),
                 segmentSize: null,
                 progress: new Progress<int>(),
                 cancellationToken: CancellationToken.None
@@ -72,8 +115,9 @@ namespace UXI.ZIP.Test
 
             string file = files.First();
             Assert.AreEqual(SESSION_EXPORT_ZIP_FILENAME, file);
-            Assert.IsTrue(File.Exists(Path.Combine(TEMP_DIR_NAME, file)));
+            Assert.IsTrue(File.Exists(Path.Combine(TempDirectoryFullPath, file)));
         }
+
 
         [TestMethod]
         public void Pack_FolderToMultipleArchiveSegmentsTest()
@@ -81,8 +125,8 @@ namespace UXI.ZIP.Test
             int segmentSize = 2 * 1024 * 1024;
             IEnumerable<string> files = ZipHelper.Pack
             (
-                fileName: Path.Combine(TEMP_DIR_NAME, SESSION_EXPORT_ZIP_FILENAME),
-                folderPath: Path.Combine(TESTFILES_DIR_NAME, SESSION_EXPORT_ITEM_NAME),
+                fileName: Path.Combine(TempDirectoryFullPath, SESSION_EXPORT_ZIP_FILENAME),
+                folderPath: Path.Combine(TestFilesDirectoryFullPath, SESSION_EXPORT_ITEM_NAME),
                 segmentSize: segmentSize,
                 progress: new Progress<int>(),
                 cancellationToken: CancellationToken.None
@@ -90,12 +134,12 @@ namespace UXI.ZIP.Test
 
             Assert.IsNotNull(files);
             Assert.IsTrue(files.Any());
-            Assert.IsTrue(files.Count() > 1);
+            Assert.AreEqual(6, files.Count());
 
             Assert.IsTrue(files.Any(f => f.Equals(SESSION_EXPORT_ZIP_FILENAME)));
 
             string outputFileName = Path.GetFileNameWithoutExtension(files.First());
-            foreach (var file in files.Select(f => new FileInfo(Path.Combine(TEMP_DIR_NAME, f))))
+            foreach (var file in files.Select(f => new FileInfo(Path.Combine(TempDirectoryFullPath, f))))
             {
                 Assert.IsTrue(file.Exists);
                 Assert.AreEqual(outputFileName, Path.GetFileNameWithoutExtension(file.Name));
