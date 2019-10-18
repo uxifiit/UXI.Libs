@@ -1,19 +1,19 @@
-﻿Add single instance support to the app:
+﻿How to add support for running only single instance of the app:
 
-1. Update properties of the App.xaml:
+1. Update properties of the App.xaml file:
    - Build Action: Page
    - Copy to Output Directory: Do not copy
 
-2. In project's properties set Startup object to the App class.
+2. In the project properties set Startup object to the App class.
 
 3. Add the following code to the App.xaml.cs
 
-	/// <summary>
+    /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application, ISingleInstanceApp
     {
-        private const string AppIdentification = "<YourAppName>";
+        private const string AppIdentification = "ENTER_YOUR_APP_NAME_HERE";
 
 
         [STAThread]
@@ -36,5 +36,5 @@
             return true;
         }
 
-	// ...
-	}
+        // ...
+    }
