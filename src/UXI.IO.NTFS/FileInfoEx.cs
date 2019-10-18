@@ -33,7 +33,7 @@ namespace UXI.IO.NTFS
                 throw new FileNotFoundException("Unable to find the specified file.", file.FullName);
             }
 
-            if (file.Exists && file.AlternateDataStreamExists(ZoneIdentifierStreamName))
+            if (file.AlternateDataStreamExists(ZoneIdentifierStreamName))
             {
                 file.DeleteAlternateDataStream(ZoneIdentifierStreamName);
             }
