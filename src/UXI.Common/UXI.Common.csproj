@@ -59,7 +59,6 @@
     <Compile Include="Helpers\ObjectDumper.cs" />
     <Compile Include="Helpers\SystemHelper.cs" />
     <Compile Include="Helpers\UriHelper.cs" />
-    <Compile Include="IOptionsTarget.cs" />
     <Compile Include="Locations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
