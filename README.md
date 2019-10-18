@@ -2,7 +2,7 @@
 
 [![Build Status](https://dev.azure.com/uxifiit/Libs/_apis/build/status/uxifiit.UXI.Libs?branchName=master)](https://dev.azure.com/uxifiit/Libs/_build/latest?definitionId=3&branchName=master)
 
-This repository contains common libraries for projects of the UXIsk software infrastructure. 
+This repository contains common libraries shared in projects of UXIsk software infrastructure. 
 
 To use these libraries in your projects, add them as a NuGet reference. 
 
@@ -20,24 +20,25 @@ To use these libraries in your projects, add them as a NuGet reference.
 |UXI.IO|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.IO.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.IO)|
 |UXI.IO.NTFS|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.IO.NTFS.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.IO.NTFS)|
 |UXI.OwinServer|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.OwinServer.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.OwinServer)|
-|UXI.Serialization|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.Serialization.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.Serialization)|
-|UXI.Serialization.Reactive|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.Serialization.Reactive.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.Serialization.Reactive)|
 |UXI.SystemApi|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.SystemApi.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.SystemApi)|
 |UXI.ZIP|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.ZIP.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.ZIP)|
 
 
-## Authors
+## Author
 
-* Martin Konopka - [@martinkonopka](https://github.com/martinkonopka)
+* Martin Konôpka - [@martinkonopka](https://github.com/martinkonopka)
+
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
+Projects in this repository are licensed under the MIT License - see [LICENSE.txt](LICENSE.txt).
+
 
 ## Contacts
 
-* UXIsk 
-  * User eXperience and Interaction Research Center, Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava
+* UXIsk
+  * User eXperience and Interaction Research Center
+  * Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava
   * Web: https://www.uxi.sk/
 * Martin Konopka
   * E-mail: martin (underscore) konopka (at) stuba (dot) sk
