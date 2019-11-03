@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("UXI.Common.Configuration")]
-[assembly: AssemblyDescription("Custom implementation for configuring libraries and applications in UXR Infrastructure.")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("UXI Dev")]
+[assembly: AssemblyCompany("UXI@FIIT")]
 [assembly: AssemblyProduct("UXI.Common.Configuration")]
-[assembly: AssemblyCopyright("Copyright © UXI 2016")]
+[assembly: AssemblyCopyright("Copyright (c) 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

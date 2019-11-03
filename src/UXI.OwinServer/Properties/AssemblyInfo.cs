@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("UXI.OwinServer")]
-[assembly: AssemblyDescription("OWIN Server Self-host server implementation with SignalR and Ninject support.")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("UXI Dev")]
+[assembly: AssemblyCompany("UXI@FIIT")]
 [assembly: AssemblyProduct("UXI.OwinServer")]
-[assembly: AssemblyCopyright("Copyright © UXI 2016")]
+[assembly: AssemblyCopyright("Copyright (c) 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
