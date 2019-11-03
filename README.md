@@ -23,10 +23,10 @@ This repository contains common libraries for other projects of the UXIsk softwa
 
 ## Installation
 
-Install these libraries as NuGet references to your project from the Azure DevOps artifacts repository. 
+UXI.Libs are available as NuGet packages in a public Azure DevOps artifacts repository. 
 
 ### Add uxifiit/UXI.Libs package source
-First, add a new package source. Choose the way that fits you best:
+First, add a new package source. Choose the way that fits you the best:
 * Add new package source in [Visual Studio settings](https://docs.microsoft.com/en-us/azure/devops/artifacts/nuget/consume?view=azure-devops).
 * Add new package source with the repository URL through command line:
 ```
