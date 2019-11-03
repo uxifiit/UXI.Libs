@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UXI.IO
+namespace UXI.Common.IO
 {
     public static class DirectoryHelper
     {
@@ -14,6 +14,7 @@ namespace UXI.IO
             Copy(sourceDirName, destDirName, true, overwrite);
             Directory.Delete(sourceDirName, true);
         }
+
 
         //http://stackoverflow.com/questions/2947300/copy-a-directory-to-a-different-drive
         public static void Copy(string sourcePath, string destinationPath, bool recursive, bool overwrite = false)
@@ -34,7 +35,6 @@ namespace UXI.IO
             {
                 Directory.CreateDirectory(destinationPath);
             }
-
 
             // Get the file contents of the directory to copy.
             FileInfo[] files = dir.GetFiles();

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UXI.Common;
 
-namespace UXI.IO
+namespace UXI.Common.IO
 {
     public class TempFile : DisposableBase
     {
