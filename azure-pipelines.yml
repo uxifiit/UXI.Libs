@@ -43,3 +43,13 @@ steps:
     command: 'pack'
     packagesToPack: '$(nuspecs)/**/*.nuspec'
     versioningScheme: 'off'
+    buildProperties: 'commit=$(Build.SourceVersion);branch=$(Build.SourceBranchName)'
+
+- task: NuGetCommand@2
+  displayName: 'nuget push'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '875e4574-b18a-49ff-8cf1-55b220af2355/f25beb4b-f7d5-4466-9073-a54052469941'
+    allowPackageConflicts: true
