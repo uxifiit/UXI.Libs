@@ -8,7 +8,6 @@ To use these libraries in your projects, add them as a NuGet reference.
 
 |Library |Package|Description|
 |--------|:-----:|-----------|
-|UXI.App|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.App.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.App)|
 |UXI.Common|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.Common.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.Common)|
 |UXI.Common.UI|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.Common.UI.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.Common.UI)|
 |UXI.Common.Web|[![MyGet](https://img.shields.io/myget/uxifiit/v/UXI.Common.Web.svg)](https://www.myget.org/feed/uxifiit/package/nuget/UXI.Common.Web)|

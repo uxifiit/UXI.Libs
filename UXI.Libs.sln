@@ -2,8 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.App", "src\UXI.App\UXI.App.csproj", "{3B6782FA-1654-4437-BF77-01407FB09672}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.Common", "src\UXI.Common\UXI.Common.csproj", "{2F7ADF76-E1BC-4F1C-B82C-A7EAEC9843CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXI.Common.UI", "src\UXI.Common.UI\UXI.Common.UI.csproj", "{F6007D6D-C83B-4525-841F-376312645B5B}"
@@ -49,7 +47,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7A50DD6B-449E-4228-8ABA-9B7E100A351F}"
 	ProjectSection(SolutionItems) = preProject
-		.nuget\UXI.App.nuspec = .nuget\UXI.App.nuspec
 		.nuget\UXI.Common.nuspec = .nuget\UXI.Common.nuspec
 		.nuget\UXI.Common.UI.nuspec = .nuget\UXI.Common.UI.nuspec
 		.nuget\UXI.Common.Web.nuspec = .nuget\UXI.Common.Web.nuspec
@@ -71,10 +68,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3B6782FA-1654-4437-BF77-01407FB09672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B6782FA-1654-4437-BF77-01407FB09672}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B6782FA-1654-4437-BF77-01407FB09672}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B6782FA-1654-4437-BF77-01407FB09672}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2F7ADF76-E1BC-4F1C-B82C-A7EAEC9843CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2F7ADF76-E1BC-4F1C-B82C-A7EAEC9843CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F7ADF76-E1BC-4F1C-B82C-A7EAEC9843CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
