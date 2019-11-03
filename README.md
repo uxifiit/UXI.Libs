@@ -2,7 +2,7 @@
 
 [![Build Status](https://dev.azure.com/uxifiit/Libs/_apis/build/status/uxifiit.UXI.Libs?branchName=master)](https://dev.azure.com/uxifiit/Libs/_build/latest?definitionId=3&branchName=master)
 
-This repository contains common libraries shared in projects of UXIsk software infrastructure. 
+This repository contains common libraries for other projects of the UXIsk software infrastructure. 
 
 To use these libraries in your projects, add them as a NuGet reference. 
 
