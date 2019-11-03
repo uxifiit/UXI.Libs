@@ -4,17 +4,19 @@
     <id>UXI.Common</id>
     <version>2.3.0</version>
     <title>UXI.Common</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Base library with common helpers and extensions.</description>
-    <releaseNotes>Added IOptionsTarget, mainly for command line parsing.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
-    <tags>Disposable Locations DateTime Filename Dictionary Throw Helpers</tags>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
+    <description>Common helpers and extensions to .NET framework.</description>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
+    <releaseNotes>Updated package details.</releaseNotes>
+    <tags>Disposable Locations DateTimeEx Filename DictionaryEx ThrowEx StreamEx Helpers</tags>
     <dependencies />
   </metadata>
   <files>
-    <file src="..\src\UXI.Common\bin\Release\UXI.Common.dll" target="lib\net45" />
+    <file src="..\src\UXI.Common\bin\$configuration$\UXI.Common.dll" target="lib\net45" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>

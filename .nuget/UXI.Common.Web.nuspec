@@ -4,19 +4,21 @@
     <id>UXI.Common.Web</id>
     <version>2.1.2</version>
     <title>UXI.Common.Web</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Base helper classes for ASP.NET MVC projects.</description>
-    <releaseNotes>Added checking for CanWrite into destination stream in ProgressStreamContent.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
+    <description>Base helper classes for web projects in ASP.NET MVC 5.</description>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
+    <releaseNotes>Updated package details.</releaseNotes>
     <tags>HttpRequestBaseEx ThrowIfDifferentReferrer</tags>
     <dependencies>
-      <dependency id="UXI.Common" version="2.3.0" />
+      <dependency id="UXI.Common" version="2.4.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\UXI.Common.Web\bin\Release\UXI.Common.Web.dll" target="lib\net45" />
+    <file src="..\src\UXI.Common.Web\bin\$configuration$\UXI.Common.Web.dll" target="lib\net45" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>

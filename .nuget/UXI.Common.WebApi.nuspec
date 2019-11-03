@@ -4,20 +4,21 @@
     <id>UXI.Common.WebApi</id>
     <version>1.0.0</version>
     <title>UXI.Common.WebApi</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Helper library for ASP.NET WebApi projects.</description>
-    <releaseNotes>Initial release of helpers library for ASP.NET WebApi projects.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
+    <description>Helper library for ASP.NET WebApi projects, adds FileActionResult.</description>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
+    <releaseNotes>Updated package details.</releaseNotes>
     <tags>FileActionResult</tags>
     <dependencies>
       <dependency id="Microsoft.AspNet.WebApi.Core" version="5.2.3" />
-      <dependency id="Newtonsoft.Json" version="9.0.1" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\UXI.Common.WebApi\bin\Release\UXI.Common.WebApi.dll" target="lib\net452" />
+    <file src="..\src\UXI.Common.WebApi\bin\$configuration$\UXI.Common.WebApi.dll" target="lib\net452" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>

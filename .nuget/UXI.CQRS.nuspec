@@ -4,17 +4,19 @@
     <id>UXI.CQRS</id>
     <version>1.0.0</version>
     <title>UXI.CQRS</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>CQRS pattern implementation library.</description>
-    <releaseNotes>Initial release.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
+    <description>Implementation of the CQRS pattern.</description>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
+    <releaseNotes>Release version.</releaseNotes>
     <tags>ICommand ICommandHandler CommandDispatcher</tags>
     <dependencies />
   </metadata>
   <files>
-    <file src="..\src\UXI.CQRS\bin\Release\UXI.CQRS.dll" target="lib\net452" />
+    <file src="..\src\UXI.CQRS\bin\$configuration$\UXI.CQRS.dll" target="lib\net452" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>

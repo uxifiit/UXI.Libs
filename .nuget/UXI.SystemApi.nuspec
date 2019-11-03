@@ -4,17 +4,19 @@
     <id>UXI.SystemApi</id>
     <version>0.3.0</version>
     <title>UXI.SystemApi</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
     <description>Library with WinApi wrappers</description>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
     <releaseNotes>Added ProcessInterop to allow opening separate process from a parent process in the Job.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
     <tags>MouseCoordinatesHook Job</tags>
     <dependencies />
   </metadata>
   <files>
-    <file src="..\src\UXI.SystemApi\bin\Release\UXI.SystemApi.dll" target="lib\net452" />
+    <file src="..\src\UXI.SystemApi\bin\$configuration$\UXI.SystemApi.dll" target="lib\net452" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>

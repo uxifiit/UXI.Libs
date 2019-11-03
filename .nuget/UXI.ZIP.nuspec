@@ -4,13 +4,14 @@
     <id>UXI.ZIP</id>
     <version>2.1.1</version>
     <title>UXI.ZIP</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Helper classes for ZIP archives compression and decompression.</description>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
+    <description>Helper classes for packing and unpacking ZIP archives with DotNetZip.</description>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
     <releaseNotes>Fixed unpacking files with space in name.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
     <tags>ZIP</tags>
     <dependencies>
       <dependency id="DotNetZip" version="1.13.3" />
@@ -18,6 +19,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\UXI.ZIP\bin\Release\UXI.ZIP.dll" target="lib\net452" />
+    <file src="..\src\UXI.ZIP\bin\$configuration$\UXI.ZIP.dll" target="lib\net452" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>

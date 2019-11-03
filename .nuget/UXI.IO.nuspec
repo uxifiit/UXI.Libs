@@ -4,19 +4,21 @@
     <id>UXI.IO</id>
     <version>2.0.0</version>
     <title>UXI.IO</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
     <description>Helper libraries for handling IO operations, i.e., temporary files.</description>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
     <releaseNotes>Fixed namespace.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
     <tags>TempFile DirectoryHelper</tags>
     <dependencies>
       <dependency id="UXI.Common" version="2.3.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\UXI.IO\bin\Release\UXI.IO.dll" target="lib\net452" />
+    <file src="..\src\UXI.IO\bin\$configuration$\UXI.IO.dll" target="lib\net452" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>

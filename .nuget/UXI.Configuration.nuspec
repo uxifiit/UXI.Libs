@@ -3,20 +3,22 @@
   <metadata>
     <id>UXI.Configuration</id>
     <version>2.1.3</version>
-    <title>UXI.Common.Configuration</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <title>UXI.Configuration</title>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
     <description>Custom implementation for configuring libraries and applications in UXR Infrastructure.</description>
-    <releaseNotes>Fixed access to the setting of the property key.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
+    <releaseNotes>Update package details.</releaseNotes>
     <tags>Configuration</tags>
     <dependencies>
-      <dependency id="UXI.Common" version="2.3.0" />
+      <dependency id="UXI.Common" version="2.4.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\UXI.Configuration\bin\Release\UXI.Configuration.dll" target="lib\net452" />
+    <file src="..\src\UXI.Configuration\bin\$configuration$\UXI.Configuration.dll" target="lib\net452" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>

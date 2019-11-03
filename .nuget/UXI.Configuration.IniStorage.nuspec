@@ -3,22 +3,24 @@
   <metadata>
     <id>UXI.Configuration.IniStorage</id>
     <version>2.1.0</version>
-    <title>UXI.Common.Configuration.IniStorage</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <title>UXI.Configuration.IniStorage</title>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Implementation of IConfigurationStorage from the UXI.Common.Configuration package with INI file.</description>
-    <releaseNotes>Updated IniFile with new method ContainsKey to check for existence of a specific section and key.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
+    <description>Implementation of INI file as a configuration storage for the UXI.Configuration package.</description>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
+    <releaseNotes>Updated package details.</releaseNotes>
     <tags>Configuration INI</tags>
     <dependencies>
       <dependency id="ini-parser" version="2.3.0" />
-      <dependency id="UXI.Common" version="2.3.0" />
-      <dependency id="UXI.Configuration" version="2.1.3" />
+      <dependency id="UXI.Common" version="2.4.0" />
+      <dependency id="UXI.Configuration" version="2.2.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\UXI.Configuration.IniStorage\bin\Release\UXI.Configuration.IniStorage.dll" target="lib\net452" />
+    <file src="..\src\UXI.Configuration.IniStorage\bin\$configuration$\UXI.Configuration.IniStorage.dll" target="lib\net452" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>

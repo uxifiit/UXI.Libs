@@ -4,13 +4,14 @@
     <id>UXI.CQRS.EntityFramework</id>
     <version>1.0.0</version>
     <title>UXI.CQRS.EntityFramework</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Extensions to the UXI.CQRS library specific to EntityFramework</description>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
+    <description>Extensions to the UXI.CQRS library specific to the EntityFramework.</description>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
     <releaseNotes>Initial release.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
     <tags>TransactionCommandHandlerDecorator</tags>
     <dependencies>
       <dependency id="EntityFramework" version="6.1.3" />
@@ -18,6 +19,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\UXI.CQRS.EntityFramework\bin\Release\UXI.CQRS.EntityFramework.dll" target="lib\net452" />
+    <file src="..\src\UXI.CQRS.EntityFramework\bin\$configuration$\UXI.CQRS.EntityFramework.dll" target="lib\net452" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>

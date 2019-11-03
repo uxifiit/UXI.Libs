@@ -4,13 +4,14 @@
     <id>UXI.OwinServer</id>
     <version>2.3.1</version>
     <title>UXI.OwinServer</title>
-    <authors>UXI Dev</authors>
-    <owners>UXI FIIT STUBA</owners>
+    <authors>uxifiit</authors>
     <projectUrl>https://github.com/uxifiit/UXI.Libs</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
     <description>Implementation of self-host OWIN server with support for SignalR and Ninject.</description>
+    <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
     <releaseNotes>Removed UTC time zone restriction.</releaseNotes>
-    <copyright>Copyright &#x00A9; 2018 UXI FIIT STUBA</copyright>
     <tags>Owin ServerHost</tags>
     <dependencies>
       <dependency id="Microsoft.AspNet.Cors" version="5.2.3" />
@@ -40,6 +41,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\UXI.OwinServer\bin\Release\UXI.OwinServer.dll" target="lib\net452" />
+    <file src="..\src\UXI.OwinServer\bin\$configuration$\UXI.OwinServer.dll" target="lib\net452" />
+    <file src="..\LICENSE.txt" target="" />
   </files>
 </package>
