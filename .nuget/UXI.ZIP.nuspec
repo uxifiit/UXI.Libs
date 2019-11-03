@@ -11,7 +11,7 @@
     <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
     <description>Helper classes for packing and unpacking ZIP archives with DotNetZip.</description>
     <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
-    <releaseNotes>Fixed unpacking files with space in name.</releaseNotes>
+    <releaseNotes>Public release</releaseNotes>
     <tags>ZIP</tags>
     <dependencies>
       <dependency id="DotNetZip" version="1.13.3" />

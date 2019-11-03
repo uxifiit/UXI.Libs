@@ -11,7 +11,7 @@
     <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
     <description>Implementation of the CQRS pattern.</description>
     <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
-    <releaseNotes>Release version.</releaseNotes>
+    <releaseNotes>Public release</releaseNotes>
     <tags>ICommand ICommandHandler CommandDispatcher</tags>
     <dependencies />
   </metadata>

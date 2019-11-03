@@ -11,7 +11,7 @@
     <repository type="git" url="https://github.com/uxifiit/UXI.Libs" branch="$branch$" commit="$commit$" />
     <description>Extensions to the UXI.CQRS library specific to the EntityFramework.</description>
     <copyright>Copyright © 2018 Faculty of Informatics and Information Technologies, Slovak University of Technology in Bratislava</copyright>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Public release</releaseNotes>
     <tags>TransactionCommandHandlerDecorator</tags>
     <dependencies>
       <dependency id="EntityFramework" version="6.1.3" />
