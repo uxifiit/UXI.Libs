@@ -4,7 +4,9 @@
 
 This repository contains common libraries for other projects of the UXIsk software infrastructure. 
 
-
+Further libraries are separated into own repositories:
+* [UXI.Serialization](https://github.com/uxifiit/UXI.Serialization) library for writing and reading data streams with serialization.
+* [UXI.Filters](https://github.com/uxifiit/Filters) framework for creating data filtering applications.
 
 |Library |Package|
 |--------|:-----:|
