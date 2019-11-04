@@ -25,7 +25,10 @@ Further libraries are separated into own repositories:
 
 ## Installation
 
-UXI.Libs are available as NuGet packages in a public Azure DevOps artifacts repository. 
+UXI.Libs are available as NuGet packages in a public Azure DevOps artifacts repository:
+```
+https://pkgs.dev.azure.com/uxifiit/UXI.Libs/_packaging/Public/nuget/v3/index.json
+```
 
 ### Add uxifiit/UXI.Libs package source
 First, add a new package source. Choose the way that fits you the best:
@@ -34,7 +37,7 @@ First, add a new package source. Choose the way that fits you the best:
 ```
 nuget source Add -Name "UXI.Libs Public Feed" -Source "https://pkgs.dev.azure.com/uxifiit/UXI.Libs/_packaging/Public/nuget/v3/index.json"
 ```
-* Create `NuGet.config` file in your project's solution directory where you specify this repository:
+* Create `NuGet.config` file in your project's solution directory where you specify this package source:
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -48,7 +51,7 @@ nuget source Add -Name "UXI.Libs Public Feed" -Source "https://pkgs.dev.azure.co
 
 ### Install UXI.Libs packages
 
-Then install a package to your project using the Visual Studio "Manage NuGet Packages..." window or use Package Manage Console:
+Then install the packages to your project using the Visual Studio "Manage NuGet Packages..." window or use the Package Manage Console:
 ```
 PM> Install-Package <Library>
 ```
