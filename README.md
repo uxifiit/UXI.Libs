@@ -25,25 +25,25 @@ Further libraries are separated into own repositories:
 
 ## Installation
 
-UXI.Libs are available as NuGet packages in a public Azure DevOps artifacts repository:
+UXI.Libs are available as NuGet packages in a public Azure DevOps artifacts repository for all UXIsk packages:
 ```
 https://pkgs.dev.azure.com/uxifiit/Packages/_packaging/Public/nuget/v3/index.json
 ```
 
-### Add UXIsk Public Feed to package sources
+### Add UXIsk Packages to package sources
 First, add a new package source. Choose the way that fits you the best:
 * Add new package source in [Visual Studio settings](https://docs.microsoft.com/en-us/azure/devops/artifacts/nuget/consume?view=azure-devops).
-* Add new package source with the repository URL through command line:
+* Add new package source from command line:
 ```
-nuget source Add -Name "UXIsk Public Feed" -Source "https://pkgs.dev.azure.com/uxifiit/Packages/_packaging/Public/nuget/v3/index.json"
+nuget source Add -Name "UXIsk Packages" -Source "https://pkgs.dev.azure.com/uxifiit/Packages/_packaging/Public/nuget/v3/index.json"
 ```
-* Create `NuGet.config` file in your project's solution directory where you specify this package source:
-
+* Create or edit `NuGet.config` file in your project's solution directory where you specify this package source:
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <packageSources>
-    <add key="UXIsk Public Feed" value="https://pkgs.dev.azure.com/uxifiit/Packages/_packaging/Public/nuget/v3/index.json" />
+    <add key="UXIsk Packages" value="https://pkgs.dev.azure.com/uxifiit/Packages/_packaging/Public/nuget/v3/index.json" />
+    <!-- other package sources -->
   </packageSources>
   <disabledPackageSources />
 </configuration>
@@ -51,7 +51,7 @@ nuget source Add -Name "UXIsk Public Feed" -Source "https://pkgs.dev.azure.com/u
 
 ### Install UXI.Libs packages
 
-Then install the packages to your project using the Visual Studio "Manage NuGet Packages..." window or use the Package Manage Console:
+Then install the packages to your project using the Visual Studio "Manage NuGet Packages..." window or use the Package Manager Console:
 ```
 PM> Install-Package <Library>
 ```
