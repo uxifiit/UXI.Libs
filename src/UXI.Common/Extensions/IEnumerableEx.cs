@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace System.Linq
@@ -61,6 +62,7 @@ namespace System.Linq
             }
         }
 
+
         public static IEnumerable<T> Append<T>(this IEnumerable<T> source, T item)
         {
             if (source != null)
@@ -113,6 +115,82 @@ namespace System.Linq
             }
 
             return false;
+        }
+
+
+        public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T> other)
+            where T : IComparable
+        {
+            return Merge<T, T, T>(source, other, (a, b) => a.CompareTo(b));
+        }
+
+
+        public static IEnumerable<object> Merge<TSource, TResult>
+        (
+            this IEnumerable<TSource> source,
+            IEnumerable<TResult> other,
+            Func<TSource, TResult, int> comparer
+        )
+        {
+            return Merge<TSource, TResult, object>(source, other, comparer, s => s, o => o);
+        }
+
+
+        public static IEnumerable<TResult> Merge<TSource, TOther, TResult>
+        (
+            this IEnumerable<TSource> source,
+            IEnumerable<TOther> other,
+            Func<TSource, TOther, int> comparer,
+            Func<TSource, TResult> receiveSource = null,
+            Func<TOther, TResult> receiveOther = null
+        )
+        {
+            var enumeratorSource = source.GetEnumerator();
+            var enumeratorOther = other.GetEnumerator();
+
+            bool readSource = false;
+            bool readOther = false;
+            bool compared;
+
+            bool hasValueSource = enumeratorSource.MoveNext();
+            bool hasValueOther = enumeratorOther.MoveNext();
+
+            do
+            {
+                readSource = hasValueSource;
+                readOther = hasValueOther;
+
+                if (readSource && readOther)
+                {
+                    compared = comparer.Invoke(enumeratorSource.Current, enumeratorOther.Current) < 0;
+                    readSource = compared;
+                    readOther = !compared;
+                }
+
+                if (readSource)
+                {
+                    var sourceCurrent = enumeratorSource.Current;
+                    yield return receiveSource.Invoke(sourceCurrent);
+                    hasValueSource = enumeratorSource.MoveNext();
+                }
+                else if (readOther)
+                {
+                    var otherCurrent = enumeratorOther.Current;
+                    yield return receiveOther.Invoke(otherCurrent);
+                    hasValueOther = enumeratorOther.MoveNext();
+                }
+            }
+            while (hasValueSource || hasValueOther);
+        }
+
+
+        public static void Enumerate<TSource>(this IEnumerable<TSource> source, CancellationToken cancellationToken)
+        {
+            var enumerator = source.GetEnumerator();
+
+            while (cancellationToken.IsCancellationRequested == false
+                && enumerator.MoveNext())
+                ;
         }
     }
 }
