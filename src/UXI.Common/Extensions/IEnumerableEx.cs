@@ -118,21 +118,44 @@ namespace System.Linq
         }
 
 
-        public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T> other)
-            where T : IComparable
+        public static IEnumerable<TResult> Merge<TSource, TResult>
+        (
+            this IEnumerable<TSource> source, 
+            IEnumerable<TSource> other, 
+            Func<TSource, TResult> receive
+        )
+            where TSource : IComparable
         {
-            return Merge<T, T, T>(source, other, (a, b) => a.CompareTo(b));
+            return Merge<TSource, TSource, TResult>(source, other, (a, b) => a.CompareTo(b), receive, receive);
         }
 
 
-        public static IEnumerable<object> Merge<TSource, TResult>
+        public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T> other)
+            where T : IComparable
+        {
+            return Merge<T>(source, other, (a, b) => a.CompareTo(b));
+        }
+
+
+        public static IEnumerable<T> Merge<T>
         (
-            this IEnumerable<TSource> source,
-            IEnumerable<TResult> other,
-            Func<TSource, TResult, int> comparer
+            this IEnumerable<T> source, 
+            IEnumerable<T> other, 
+            Func<T, T, int> comparer
         )
         {
-            return Merge<TSource, TResult, object>(source, other, comparer, s => s, o => o);
+            return Merge<T, T, T>(source, other, comparer, s => s, o => o);
+        }
+
+
+        public static IEnumerable<object> Merge<TSource, TOther>
+        (
+            this IEnumerable<TSource> source,
+            IEnumerable<TOther> other,
+            Func<TSource, TOther, int> comparer
+        )
+        {
+            return Merge<TSource, TOther, object>(source, other, comparer, s => s, o => o);
         }
 
 
@@ -141,8 +164,8 @@ namespace System.Linq
             this IEnumerable<TSource> source,
             IEnumerable<TOther> other,
             Func<TSource, TOther, int> comparer,
-            Func<TSource, TResult> receiveSource = null,
-            Func<TOther, TResult> receiveOther = null
+            Func<TSource, TResult> receiveSource,
+            Func<TOther, TResult> receiveOther
         )
         {
             var enumeratorSource = source.GetEnumerator();
